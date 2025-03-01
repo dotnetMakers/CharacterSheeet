@@ -21,6 +21,43 @@ public static class Extensions
     }
 }
 
+public class MissileWeapon : Item
+{
+    public Die Damage { get; set; }
+
+    public string ToString(int attackBonus, int damageBonus)
+    {
+        var d = new Die(Damage.Count, Damage.Sides, Damage.Bonus + damageBonus);
+
+        return $"{Name} {attackBonus:+#;-#;+0} ({d}) ";
+    }
+}
+
+public class MeleeWeapon : Item
+{
+    public Die Damage { get; set; }
+
+    public string ToString(int attackBonus, int damageBonus)
+    {
+        var d = new Die(Damage.Count, Damage.Sides, Damage.Bonus + damageBonus);
+
+        return $"{Name} {attackBonus:+#;-#;+0} ({d}) ";
+    }
+}
+
+public class Armor : Item
+{
+    public int ACBonus { get; set; }
+    public int CheckPenalty { get; set; }
+    public int SpeedPenalty { get; set; }
+    public Die FumbleDie { get; set; }
+}
+
+public class Item
+{
+    public string Name { get; set; }
+}
+
 public class Die
 {
     public int Count { get; set; } = 1;

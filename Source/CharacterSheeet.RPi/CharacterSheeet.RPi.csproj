@@ -18,4 +18,7 @@
     <ItemGroup>
         <ProjectReference Include="..\CharacterSheeet.Core\CharacterSheeet.Core.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Controllers\" />
+    </ItemGroup>
 </Project>

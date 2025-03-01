@@ -16,15 +16,35 @@ internal class DccHalflingSheet : Sheet
         _character = character;
     }
 
-    private static IEnumerable<MicroLayout> GenerateLayouts(Character character)
+    private static IEnumerable<MicroLayout> GenerateLayouts(Halfling character)
     {
         return new MicroLayout[]
         {
-            GeneratePage1(character)
+            GeneratePage1(character),
+            GeneratePage2(character),
         };
     }
 
-    private static MicroLayout GeneratePage1(Character character)
+    private static MicroLayout GeneratePage2(Halfling character)
+    {
+        var layout = new AbsoluteLayout(480, 800);
+        layout.BackgroundColor = Color.White;
+
+        var weapons = new WeaponsListLayout(5, 5, 230, 150, character);
+        var treasure = new TreasureListLayout(weapons.Left, weapons.Bottom, weapons.Width, 250, character);
+
+        var equipment = new EquipmentListLayout(245, 5, 230, 300, character);
+        var armor = new ArmorListLayout(equipment.Left, equipment.Bottom, equipment.Width, 100, character);
+
+        var abilities = new HalflingAbilitiesLayout(5, treasure.Bottom + 10, 470, 150);
+        var notes = new ItemListLayout("Notes", 5, abilities.Bottom, 470, 800 - abilities.Bottom - 10);
+
+        layout.Controls.Add(weapons, treasure, equipment, armor, abilities, notes);
+
+        return layout;
+    }
+
+    private static MicroLayout GeneratePage1(Halfling character)
     {
         var layout = new AbsoluteLayout(480, 800);
         layout.BackgroundColor = Color.White;
@@ -44,7 +64,7 @@ internal class DccHalflingSheet : Sheet
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
                 Font = largeFont,
-                Text = "HALFLING"
+                Text = $"LEVEL {character.Level} {character.Class.ToUpper()}"
             });
 
         layout.Controls.Add(
@@ -92,12 +112,13 @@ internal class DccHalflingSheet : Sheet
                 Text = $"Occupation: {character.Occcupation}"
             });
         layout.Controls.Add(
-            new Label(5, 105, 240, 12)
+            new Label(240, 80, 230, 12)
             {
                 TextColor = Color.Black,
                 BackColor = Color.Transparent,
+                HorizontalAlignment = HorizontalAlignment.Right,
                 Font = medFont,
-                Text = $"Class: {character.Class}"
+                Text = $"XP: {character.XP}"
             });
 
 
@@ -110,19 +131,15 @@ internal class DccHalflingSheet : Sheet
 
         layout.Controls.Add(new SaveCollectionLayout(220, attributesTop + 65, character));
 
-        layout.Controls.Add(new SimpleValueLayout("Lucky Roll", "d4", 220, 65 * 4 + attributesTop));
+        layout.Controls.Add(new SimpleValueLayout("Lucky Roll", character.LuckyRoll, 220, 65 * 4 + attributesTop));
 
         // combat
-        layout.Controls.Add(new SimpleValueLayout("Melee Attack", "d16", 350, 0 + attributesTop));
-        layout.Controls.Add(new SimpleValueLayout("Melee Damage", "d6+1", 350, 65 + attributesTop));
-        layout.Controls.Add(new SimpleValueLayout("Missile Attack", "d20", 350, 65 * 2 + attributesTop));
-        layout.Controls.Add(new SimpleValueLayout("Missile Damage", "d4", 350, 65 * 3 + attributesTop));
-
+        layout.Controls.Add(new CombatModifiersLayout(350, attributesTop, character));
 
         // attribute blocks
         layout.Controls.Add(new AttributeCollectionLayout(5, attributesTop, character));
 
-        layout.Controls.Add(new SimpleValueLayout("Languages", "common, halfling", 220, 65 * 5 + attributesTop, 250));
+        layout.Controls.Add(new SimpleValueLayout("Languages", string.Join(',', character.Languages), 220, 65 * 5 + attributesTop, 250));
 
         var logo = Image.LoadFromResource("CharacterSheeet.Core.Assets.dcc-logo.bmp");
         layout.Controls.Add(new Picture(10, 740, logo.Width, logo.Height, logo));

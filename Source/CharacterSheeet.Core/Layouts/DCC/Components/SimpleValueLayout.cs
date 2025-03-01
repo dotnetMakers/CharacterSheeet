@@ -6,9 +6,9 @@ namespace CharacterSheeet.Core;
 
 internal class SimpleValueLayout : AbsoluteLayout
 {
-    Label _nameLabel;
-    Label _valueLabel;
-    Box _boundsBox;
+    private Label _nameLabel;
+    private Label _valueLabel;
+    private Box _boundsBox;
 
     public SimpleValueLayout(string name, string value, int left, int top, int width = 120)
         : base(left, top, width, 60)
@@ -41,5 +41,11 @@ internal class SimpleValueLayout : AbsoluteLayout
         };
 
         this.Controls.Add(_nameLabel, _valueLabel, _boundsBox);
+    }
+
+    public string ValueText
+    {
+        get => _valueLabel.Text;
+        set => _valueLabel.Text = value;
     }
 }

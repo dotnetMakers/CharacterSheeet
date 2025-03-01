@@ -9,12 +9,12 @@ public abstract class Character : INotifyPropertyChanged
 
     public virtual int BaseSpeed { get; } = 30;
 
-    public string Name { get; set; }
+    public abstract string Class { get; }
     public abstract string Title { get; }
+
+    public string Name { get; set; }
     public string Occcupation { get; set; }
-    public string Class { get; set; }
     public string Alignment { get; set; }
-    public int Speed => BaseSpeed; // todo: add armor, etc
     public int Level { get; set; }
     public int XP { get; set; }
 
@@ -28,7 +28,10 @@ public abstract class Character : INotifyPropertyChanged
     public int Luck { get; set; }
     public int Intelligence { get; set; }
 
-    public int InitiativeModifier { get; set; }
+    public string[] Languages { get; set; }
+
+    public int Speed => BaseSpeed; // todo: add armor, etc
+    public int InitiativeModifier => GetAbilityModifier(Agility); // fighters add another +1
 
     public abstract CombatBasics GetCombatBasics();
 
@@ -50,7 +53,7 @@ public abstract class Character : INotifyPropertyChanged
             basics.WillpowerSaveModifier + GetAbilityModifier(Personality));
     }
 
-    public (int MeleeAttack, int meleeDamage, int MissileAttack, int MissileDamage) GetCombatModifiers()
+    public (int MeleeAttack, int MeleeDamage, int MissileAttack, int MissileDamage) GetCombatModifiers()
     {
         var basics = GetCombatBasics();
 

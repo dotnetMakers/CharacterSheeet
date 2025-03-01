@@ -15,7 +15,6 @@ public class MainController
     private InputController inputController;
     private SensorController sensorController;
 
-    private IOutputController OutputController => hardware.OutputController;
     private INetworkController NetworkController => hardware.NetworkController;
 
     private Temperature.UnitType units;
@@ -46,9 +45,20 @@ public class MainController
             this.hardware.DisplayRotation,
             units);
 
-        NetworkController.Connect();
+        inputController.PreviousPageRequested += OnPreviousPageRequested;
+        inputController.NextPageRequested += OnNextPageRequested;
 
         return Task.CompletedTask;
+    }
+
+    private void OnNextPageRequested(object sender, System.EventArgs e)
+    {
+        displayController.NextPage();
+    }
+
+    private void OnPreviousPageRequested(object sender, System.EventArgs e)
+    {
+        displayController.PreviousPage();
     }
 
     public async Task Run()

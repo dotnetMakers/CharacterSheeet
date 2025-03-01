@@ -18,7 +18,6 @@ internal class CharacterSheeetHardware : ICharacterSheeetHardware
     private readonly Keyboard keyboard;
 
     public RotationType DisplayRotation => RotationType.Default;
-    public IOutputController OutputController { get; }
     public INetworkController? NetworkController { get; }
     public IPixelDisplay? Display => device.Display;
     public ITemperatureSensor? TemperatureSensor { get; }
@@ -41,7 +40,5 @@ internal class CharacterSheeetHardware : ICharacterSheeetHardware
 
         LeftButton = new PushButton(keyboard.Pins.Left.CreateDigitalInterruptPort(InterruptMode.EdgeFalling));
         RightButton = new PushButton(keyboard.Pins.Right.CreateDigitalInterruptPort(InterruptMode.EdgeFalling));
-
-        OutputController = new OutputController();
     }
 }

@@ -3,6 +3,10 @@
 public class Halfling : Character
 {
     public override int BaseSpeed => 20;
+
+    public string LuckyRoll { get; set; } = string.Empty;
+    public override string Class => "Halfling";
+
     public override string Title
     {
         get

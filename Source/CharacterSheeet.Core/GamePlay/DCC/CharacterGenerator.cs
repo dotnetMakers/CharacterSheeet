@@ -18,7 +18,9 @@ public static class CharacterGenerator
             Stamina = 10,
             Personality = 4,
             Luck = 9,
-            Intelligence = 6
+            Intelligence = 6,
+            Languages = ["common"],
+            LuckyRoll = "Birdsong"
         };
     }
 }
