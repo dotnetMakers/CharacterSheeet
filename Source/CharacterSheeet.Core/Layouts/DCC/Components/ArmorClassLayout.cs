@@ -11,7 +11,7 @@ internal class ArmorClassLayout : AbsoluteLayout
     Label _valueLabel;
     Picture _shield;
 
-    public ArmorClassLayout(int left, int top)
+    public ArmorClassLayout(int left, int top, int armorClass)
         : base(left, top, 120, 150)
     {
         var smallFont = new Font12x16();
@@ -46,7 +46,7 @@ internal class ArmorClassLayout : AbsoluteLayout
             Font = largeFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
-            Text = "12"
+            Text = armorClass.ToString()
         };
 
         this.Controls.Add(_shield, _armorLabel, _classLabel, _valueLabel);
