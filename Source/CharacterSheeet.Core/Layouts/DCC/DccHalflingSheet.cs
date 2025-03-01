@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 namespace CharacterSheeet.Core;
 
-
 internal class DccHalflingSheet : Sheet
 {
     private Halfling _character;
@@ -102,17 +101,14 @@ internal class DccHalflingSheet : Sheet
             });
 
 
-        layout.Controls.Add(new ArmorClassLayout(5, 170, character.ArmorClass));
-        layout.Controls.Add(new HitPointLayout(125, 170));
+        layout.Controls.Add(new ArmorClassLayout(5, 170, character));
+        layout.Controls.Add(new HitPointLayout(125, 170, character));
 
-        layout.Controls.Add(new CombatBasicsLayout(260, 140));
+        layout.Controls.Add(new CombatBasicsLayout(260, 140, character));
 
 
 
-        // save blocks
-        layout.Controls.Add(new SaveLayout("Ref", "0", 220, 65 + attributesTop));
-        layout.Controls.Add(new SaveLayout("Fort", "+1", 220, 65 * 2 + attributesTop));
-        layout.Controls.Add(new SaveLayout("Will", "+2", 220, 65 * 3 + attributesTop));
+        layout.Controls.Add(new SaveCollectionLayout(220, attributesTop + 65, character));
 
         layout.Controls.Add(new SimpleValueLayout("Lucky Roll", "d4", 220, 65 * 4 + attributesTop));
 
@@ -124,12 +120,7 @@ internal class DccHalflingSheet : Sheet
 
 
         // attribute blocks
-        layout.Controls.Add(new AttributeLayout("Strength", 5, 0 + attributesTop));
-        layout.Controls.Add(new AttributeLayout("Agility", 5, 65 + attributesTop));
-        layout.Controls.Add(new AttributeLayout("Stamina", 5, 65 * 2 + attributesTop));
-        layout.Controls.Add(new AttributeLayout("Personality", 5, 65 * 3 + attributesTop));
-        layout.Controls.Add(new AttributeLayout("Luck", 5, 65 * 4 + attributesTop));
-        layout.Controls.Add(new AttributeLayout("Intelligence", 5, 65 * 5 + attributesTop));
+        layout.Controls.Add(new AttributeCollectionLayout(5, attributesTop, character));
 
         layout.Controls.Add(new SimpleValueLayout("Languages", "common, halfling", 220, 65 * 5 + attributesTop, 250));
 

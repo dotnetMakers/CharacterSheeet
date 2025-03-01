@@ -52,4 +52,9 @@ internal class SaveLayout : AbsoluteLayout
 
         this.Controls.Add(_nameLabel, _saveLabel, _valueCircle, _valueLabel);
     }
+
+    public void SetValue(int value)
+    {
+        _valueLabel.Text = $"{value}:+#;-#";
+    }
 }

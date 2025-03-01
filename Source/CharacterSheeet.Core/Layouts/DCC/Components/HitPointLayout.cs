@@ -2,7 +2,7 @@
 using Meadow.Foundation.Graphics;
 using Meadow.Foundation.Graphics.MicroLayout;
 
-namespace CharacterSheeet.Core;
+namespace CharacterSheeet.Dcc;
 
 internal class HitPointLayout : AbsoluteLayout
 {
@@ -11,7 +11,7 @@ internal class HitPointLayout : AbsoluteLayout
     Label _valueLabel;
     Picture _graphic;
 
-    public HitPointLayout(int left, int top)
+    public HitPointLayout(int left, int top, Character character)
         : base(left, top, 120, 150)
     {
         var smallFont = new Font12x16();
@@ -37,7 +37,7 @@ internal class HitPointLayout : AbsoluteLayout
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
-            Text = "Max: 12"
+            Text = $"Max: {character.MaxHitPoints}"
         };
         _valueLabel = new Label(0, 50, this.Width, 15)
         {
@@ -46,9 +46,22 @@ internal class HitPointLayout : AbsoluteLayout
             Font = largeFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
-            Text = "10"
+            Text = character.CurrentHitPoints.ToString()
         };
 
         this.Controls.Add(_graphic, _staticLabel, _maxLabel, _valueLabel);
+
+        character.PropertyChanged += (s, e) =>
+        {
+            switch (e.PropertyName)
+            {
+                case nameof(Character.MaxHitPoints):
+                    _valueLabel.Text = $"Max: {character.MaxHitPoints}";
+                    break;
+                case nameof(Character.CurrentHitPoints):
+                    _valueLabel.Text = character.CurrentHitPoints.ToString();
+                    break;
+            }
+        };
     }
 }

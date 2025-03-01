@@ -11,7 +11,7 @@ internal class AttributeLayout : AbsoluteLayout
     Label _valueLabel;
     Box _valueBox;
 
-    public AttributeLayout(string name, int left, int top)
+    public AttributeLayout(string name, int left, int top, int value, int modifier)
         : base(left, top, 210, 60)
     {
         var smallFont = new Font12x16();
@@ -32,8 +32,7 @@ internal class AttributeLayout : AbsoluteLayout
             TextColor = Color.Black,
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Center,
-            HorizontalAlignment = HorizontalAlignment.Left,
-            Text = $"modifier: +1"
+            HorizontalAlignment = HorizontalAlignment.Left
         };
         _valueBox = new Box(_nameLabel.Right, 0, this.Width - _nameLabel.Width, this.Height)
         {
@@ -46,10 +45,17 @@ internal class AttributeLayout : AbsoluteLayout
             TextColor = Color.Black,
             Font = largeFont,
             VerticalAlignment = VerticalAlignment.Center,
-            HorizontalAlignment = HorizontalAlignment.Center,
-            Text = $"14"
+            HorizontalAlignment = HorizontalAlignment.Center
         };
 
         this.Controls.Add(_nameLabel, _modifierLabel, _valueBox, _valueLabel);
+
+        SetValue(value, modifier);
+    }
+
+    public void SetValue(int value, int modifier)
+    {
+        _valueLabel.Text = value.ToString();
+        _modifierLabel.Text = $"modifier: {modifier:+#;-#;+0}";
     }
 }

@@ -1,0 +1,79 @@
+﻿using System;
+using System.ComponentModel;
+
+namespace CharacterSheeet.Dcc;
+
+public abstract class Character : INotifyPropertyChanged
+{
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    public virtual int BaseSpeed { get; } = 30;
+
+    public string Name { get; set; }
+    public abstract string Title { get; }
+    public string Occcupation { get; set; }
+    public string Class { get; set; }
+    public string Alignment { get; set; }
+    public int Speed => BaseSpeed; // todo: add armor, etc
+    public int Level { get; set; }
+    public int XP { get; set; }
+
+    public int CurrentHitPoints { get; set; }
+    public int MaxHitPoints { get; set; }
+
+    public int Strength { get; set; }
+    public int Agility { get; set; }
+    public int Stamina { get; set; }
+    public int Personality { get; set; }
+    public int Luck { get; set; }
+    public int Intelligence { get; set; }
+
+    public int InitiativeModifier { get; set; }
+
+    public abstract CombatBasics GetCombatBasics();
+
+    public int ArmorClass
+    {
+        get
+        {
+            // TODO: add in armor, equipment, etc
+            return 10 + GetAbilityModifier(Agility);
+        }
+    }
+
+    public (int Ref, int Fort, int Will) GetCalculatedSaves()
+    {
+        var basics = GetCombatBasics();
+        return (
+            basics.ReflexSaveModifier + GetAbilityModifier(Agility),
+            basics.FortitudeSaveModifier + GetAbilityModifier(Stamina),
+            basics.WillpowerSaveModifier + GetAbilityModifier(Personality));
+    }
+
+    public (int MeleeAttack, int meleeDamage, int MissileAttack, int MissileDamage) GetCombatModifiers()
+    {
+        var basics = GetCombatBasics();
+
+        return (
+            basics.AttackModifier + GetAbilityModifier(Strength),
+            GetAbilityModifier(Strength),
+            basics.AttackModifier + GetAbilityModifier(Agility),
+            GetAbilityModifier(Agility)
+            );
+    }
+
+    public int GetAbilityModifier(int abilityScore)
+    {
+        return abilityScore switch
+        {
+            3 => -3,
+            4 or 5 => -2,
+            >= 6 and <= 8 => -1,
+            >= 9 and <= 12 => 0,
+            >= 13 and <= 15 => 1,
+            16 or 17 => 2,
+            18 => 3,
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+}

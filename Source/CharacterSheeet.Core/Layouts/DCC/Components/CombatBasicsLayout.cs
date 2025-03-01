@@ -1,4 +1,5 @@
-﻿using Meadow;
+﻿using CharacterSheeet.Dcc;
+using Meadow;
 using Meadow.Foundation.Graphics;
 using Meadow.Foundation.Graphics.MicroLayout;
 
@@ -6,13 +7,15 @@ namespace CharacterSheeet.Core;
 
 internal class CombatBasicsLayout : AbsoluteLayout
 {
-    Box _boundsBox;
-    Label _titleLabel;
+    private Character _character;
 
-    Label _initiativeLabel;
-    Label _initiativeValueLabel;
-    Label _actionDiceLabel;
-    Label _actionDiceValueLabel;
+    private Box _boundsBox;
+    private Label _titleLabel;
+
+    private Label _initiativeLabel;
+    private Label _initiativeValueLabel;
+    private Label _actionDiceLabel;
+    private Label _actionDiceValueLabel;
     private Label _attackLabel;
     private Label _attackValueLabel;
     private Label _critDieLabel;
@@ -20,9 +23,11 @@ internal class CombatBasicsLayout : AbsoluteLayout
     private Label _critTableLabel;
     private Label _critTableValueLabel;
 
-    public CombatBasicsLayout(int left, int top)
+    public CombatBasicsLayout(int left, int top, Character character)
         : base(left, top, 210, 200)
     {
+        _character = character;
+
         var font = new Font8x16();
 
         _boundsBox = new Box(0, 0, this.Width, this.Height)
@@ -56,7 +61,7 @@ internal class CombatBasicsLayout : AbsoluteLayout
             HorizontalAlignment = HorizontalAlignment.Right,
             VerticalAlignment = VerticalAlignment.Center,
             Font = font,
-            Text = "+1"
+            Text = $"{character.InitiativeModifier:+#;-#}"
         };
 
         _actionDiceLabel = new Label(5, 60, 140, 30)
@@ -143,5 +148,19 @@ internal class CombatBasicsLayout : AbsoluteLayout
             _critDieLabel, _critDieValueLabel,
             _critTableLabel, _critTableValueLabel
             );
+
+        Update();
+
+        // TODO: update on level change
+    }
+
+    private void Update()
+    {
+        _initiativeValueLabel.Text = $"{_character.InitiativeModifier:+#;-#;+0}";
+        var basics = _character.GetCombatBasics();
+        _actionDiceValueLabel.Text = string.Join('+', (object[])basics.ActionDice);
+        _attackValueLabel.Text = $"{basics.AttackModifier:+#;-#}";
+        _critDieValueLabel.Text = $"{basics.CritDie}";
+        _critTableValueLabel.Text = $"{basics.CritTable.ToRomanNumeral()}";
     }
 }
