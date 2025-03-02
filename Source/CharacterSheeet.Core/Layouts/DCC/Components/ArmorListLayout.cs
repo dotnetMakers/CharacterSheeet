@@ -36,7 +36,7 @@ internal class ArmorListLayout : AbsoluteLayout
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
-            Text = "Padded (+1)"
+            Text = $"{character.Armor.Name}({character.Armor.ACBonus:+#;-#;+0})"
         };
 
         _checkLabel = new Label(0, _armorLabel.Bottom, this.Width, 20)
@@ -46,7 +46,7 @@ internal class ArmorListLayout : AbsoluteLayout
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
-            Text = "Check penalty (0)"
+            Text = $"Check penalty ({character.Armor.CheckPenalty:+#;-#;+0})"
         };
 
         _fumbleLabel = new Label(0, _checkLabel.Bottom, this.Width, 20)
@@ -56,7 +56,7 @@ internal class ArmorListLayout : AbsoluteLayout
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
-            Text = "Fumble die (d4)"
+            Text = $"Fumble die ({character.Armor.FumbleDie})"
         };
 
         _boundsBox = new Box(0, 30, this.Width, this.Height - 30)

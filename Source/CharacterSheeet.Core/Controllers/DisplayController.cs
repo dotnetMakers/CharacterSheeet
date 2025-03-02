@@ -1,7 +1,6 @@
 ﻿using CharacterSheeet.Dcc;
 using Meadow.Foundation.Graphics.MicroLayout;
 using Meadow.Peripherals.Displays;
-using Meadow.Units;
 
 namespace CharacterSheeet.Core;
 
@@ -13,12 +12,11 @@ public class DisplayController
     public DisplayController(
         IPixelDisplay? display,
         RotationType displayRotation,
-        Temperature.UnitType unit)
+        Character character)
     {
         _screen = new DisplayScreen(display);
 
-        var character = CharacterGenerator.GenerateHalfling();
-        _sheet = new DccHalflingSheet(character);
+        _sheet = new DccHalflingSheet(character as Halfling);
         var page = _sheet.CurrentPage;
 
         _screen.Controls.Add(page);

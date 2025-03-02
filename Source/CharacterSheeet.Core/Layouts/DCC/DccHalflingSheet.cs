@@ -100,7 +100,7 @@ internal class DccHalflingSheet : Sheet
                 BackColor = Color.Transparent,
                 HorizontalAlignment = HorizontalAlignment.Right,
                 Font = medFont,
-                Text = $"Speed: {character.Speed}"
+                Text = $"Speed: {character.Speed + character.Armor.SpeedPenalty}"
             });
 
         layout.Controls.Add(

@@ -5,6 +5,8 @@ namespace CharacterSheeet.Dcc;
 
 public abstract class Character : INotifyPropertyChanged
 {
+    private int _currentHP;
+
     public event PropertyChangedEventHandler? PropertyChanged;
 
     public virtual int BaseSpeed { get; } = 30;
@@ -18,7 +20,11 @@ public abstract class Character : INotifyPropertyChanged
     public int Level { get; set; }
     public int XP { get; set; }
 
-    public int CurrentHitPoints { get; set; }
+    public int CurrentHitPoints
+    {
+        get => _currentHP;
+        set => this.SetAndRaiseIfChanged(ref _currentHP, value, args => PropertyChanged?.Invoke(this, args));
+    }
     public int MaxHitPoints { get; set; }
 
     public int Strength { get; set; }
@@ -29,6 +35,11 @@ public abstract class Character : INotifyPropertyChanged
     public int Intelligence { get; set; }
 
     public string[] Languages { get; set; }
+
+    public Weapon[] Weapons { get; set; }
+    public Armor Armor { get; set; }
+    public Item[] Equipment { get; set; }
+    public Treasure[] Treasure { get; set; }
 
     public int Speed => BaseSpeed; // todo: add armor, etc
     public int InitiativeModifier => GetAbilityModifier(Agility); // fighters add another +1

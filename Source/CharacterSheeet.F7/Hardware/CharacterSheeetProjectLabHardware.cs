@@ -2,7 +2,6 @@
 using CharacterSheeet.Core.Contracts;
 using Meadow.Devices;
 using Meadow.Peripherals.Displays;
-using Meadow.Peripherals.Sensors;
 using Meadow.Peripherals.Sensors.Buttons;
 
 namespace CharacterSheeet.F7;
@@ -14,7 +13,8 @@ internal class CharacterSheeetProjectLabHardware : ICharacterSheeetHardware
     public RotationType DisplayRotation => RotationType._270Degrees;
     public IButton? LeftButton => projLab.LeftButton;
     public IButton? RightButton => projLab.RightButton;
-    public ITemperatureSensor? TemperatureSensor => projLab.TemperatureSensor;
+    public IButton? UpButton => projLab.LeftButton;
+    public IButton? DownButton => projLab.RightButton;
     public IPixelDisplay? Display => projLab.Display;
     public INetworkController NetworkController { get; }
 

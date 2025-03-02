@@ -20,7 +20,15 @@ public static class CharacterGenerator
             Luck = 9,
             Intelligence = 6,
             Languages = ["common"],
-            LuckyRoll = "Birdsong"
+            LuckyRoll = "Birdsong",
+            Weapons = [
+                new MeleeWeapon {  Name = "short sword", Damage = new Die(6)},
+                new MeleeWeapon {  Name = "short sword", Damage = new Die(6)},
+                new MissileWeapon {  Name = "crossbow", Damage = new Die(6)},
+            ],
+            Armor = new Armor { Name = "Padded", ACBonus = 1, CheckPenalty = 0, FumbleDie = new Die(4) },
+            Equipment = [new Item { Name = "Torch", Quantity = 5 }, new Item { Name = "Rope, 50'" }, new Item { Name = "Rations, per day", Quantity = 3 }],
+            Treasure = [new Treasure { Name = "gp", Quantity = 3 }, new Treasure { Name = "cp", Quantity = 15 }]
         };
     }
 }

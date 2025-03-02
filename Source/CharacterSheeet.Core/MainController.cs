@@ -1,6 +1,6 @@
 ﻿using CharacterSheeet.Core.Contracts;
+using CharacterSheeet.Dcc;
 using Meadow;
-using Meadow.Units;
 using System.Threading.Tasks;
 
 namespace CharacterSheeet.Core;
@@ -8,6 +8,7 @@ namespace CharacterSheeet.Core;
 public class MainController
 {
     private ICharacterSheeetHardware hardware;
+    private Character _character;
 
     private CloudController cloudController;
     private ConfigurationController configurationController;
@@ -17,19 +18,16 @@ public class MainController
 
     private INetworkController NetworkController => hardware.NetworkController;
 
-    private Temperature.UnitType units;
-    private Temperature currentTemperature;
-    private Temperature thresholdTemperature;
-
     public MainController()
     {
     }
+
 
     public Task Initialize(ICharacterSheeetHardware hardware)
     {
         this.hardware = hardware;
 
-        this.thresholdTemperature = 68.Fahrenheit();
+        _character = CharacterGenerator.GenerateHalfling();
 
         // create generic services
         configurationController = new ConfigurationController();
@@ -37,18 +35,27 @@ public class MainController
         sensorController = new SensorController(hardware);
         inputController = new InputController(hardware);
 
-        units = configurationController.Units;
-        thresholdTemperature = configurationController.ThresholdTemp;
-
         displayController = new DisplayController(
             this.hardware.Display,
             this.hardware.DisplayRotation,
-            units);
+            _character);
 
         inputController.PreviousPageRequested += OnPreviousPageRequested;
         inputController.NextPageRequested += OnNextPageRequested;
+        inputController.IncrementRequested += OnIncrementRequested;
+        inputController.DecrementRequested += OnDecrementRequested;
 
         return Task.CompletedTask;
+    }
+
+    private void OnDecrementRequested(object sender, System.EventArgs e)
+    {
+        _character.CurrentHitPoints--;
+    }
+
+    private void OnIncrementRequested(object sender, System.EventArgs e)
+    {
+        _character.CurrentHitPoints++;
     }
 
     private void OnNextPageRequested(object sender, System.EventArgs e)
