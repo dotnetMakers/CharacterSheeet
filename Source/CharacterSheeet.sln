@@ -31,6 +31,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serialization.MicroJson", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensors.Hid.Keyboard", "..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Hid.Keyboard\Driver\Sensors.Hid.Keyboard.csproj", "{65ADD2C4-2A61-C9FB-C78A-5C8C3F8EDB4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphics.MicroGraphics", "..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Libraries_and_Frameworks\Graphics.MicroGraphics\Driver\Graphics.MicroGraphics.csproj", "{03182579-613D-9867-47EC-733D2885C11F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Displays.Silk", "..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Displays.Silk\Driver\Displays.Silk.csproj", "{88200BE9-62F6-8E77-7CAE-480F86842CB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Displays.ePaperWaveShare", "..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Displays.ePaperWaveShare\Driver\Displays.ePaperWaveShare.csproj", "{D33B833C-7864-5D79-CEA3-0B13422129A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +103,22 @@ Global
 		{65ADD2C4-2A61-C9FB-C78A-5C8C3F8EDB4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65ADD2C4-2A61-C9FB-C78A-5C8C3F8EDB4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65ADD2C4-2A61-C9FB-C78A-5C8C3F8EDB4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03182579-613D-9867-47EC-733D2885C11F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03182579-613D-9867-47EC-733D2885C11F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03182579-613D-9867-47EC-733D2885C11F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{03182579-613D-9867-47EC-733D2885C11F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03182579-613D-9867-47EC-733D2885C11F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03182579-613D-9867-47EC-733D2885C11F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{88200BE9-62F6-8E77-7CAE-480F86842CB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88200BE9-62F6-8E77-7CAE-480F86842CB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88200BE9-62F6-8E77-7CAE-480F86842CB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88200BE9-62F6-8E77-7CAE-480F86842CB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D33B833C-7864-5D79-CEA3-0B13422129A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D33B833C-7864-5D79-CEA3-0B13422129A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D33B833C-7864-5D79-CEA3-0B13422129A6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D33B833C-7864-5D79-CEA3-0B13422129A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D33B833C-7864-5D79-CEA3-0B13422129A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D33B833C-7864-5D79-CEA3-0B13422129A6}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,6 +133,9 @@ Global
 		{E00A11F4-E08B-BD9F-8157-F55F456D1228} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{6BDD883E-88AB-28F1-9C06-7E55CCD624AB} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{65ADD2C4-2A61-C9FB-C78A-5C8C3F8EDB4E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{03182579-613D-9867-47EC-733D2885C11F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{88200BE9-62F6-8E77-7CAE-480F86842CB7} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{D33B833C-7864-5D79-CEA3-0B13422129A6} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09135FF6-4397-42E8-B43E-37CB8C9D8510}

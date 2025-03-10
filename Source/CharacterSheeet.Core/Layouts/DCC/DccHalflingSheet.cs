@@ -8,7 +8,7 @@ namespace CharacterSheeet.Core;
 
 internal class DccHalflingSheet : Sheet
 {
-    private Halfling _character;
+    private readonly Halfling _character;
 
     public DccHalflingSheet(Halfling character)
         : base(GenerateLayouts(character))

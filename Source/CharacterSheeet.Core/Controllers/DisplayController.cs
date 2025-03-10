@@ -1,4 +1,5 @@
 ﻿using CharacterSheeet.Dcc;
+using Meadow;
 using Meadow.Foundation.Graphics.MicroLayout;
 using Meadow.Peripherals.Displays;
 
@@ -14,16 +15,24 @@ public class DisplayController
         RotationType displayRotation,
         Character character)
     {
-        _screen = new DisplayScreen(display);
+        _screen = new DisplayScreen(display)
+        {
+            BackgroundColor = Color.White
+        };
 
-        _sheet = new DccHalflingSheet(character as Halfling);
+        _sheet = new TestSheet();
+        //        _sheet = new DccHalflingSheet(character as Halfling);
         var page = _sheet.CurrentPage;
+
+        Resolver.Log.Info($"Showing initial page of {_sheet.GetType().Name}...");
 
         _screen.Controls.Add(page);
     }
 
     public void NextPage()
     {
+        Resolver.Log.Info("Request next page...");
+
         var page = _sheet.NextPage();
         if (page != null)
         {
@@ -36,6 +45,8 @@ public class DisplayController
 
     public void PreviousPage()
     {
+        Resolver.Log.Info("Request previous page...");
+
         var page = _sheet.PreviousPage();
         if (page != null)
         {

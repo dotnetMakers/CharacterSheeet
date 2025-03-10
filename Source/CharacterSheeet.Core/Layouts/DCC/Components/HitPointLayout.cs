@@ -39,9 +39,9 @@ internal class HitPointLayout : AbsoluteLayout
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = $"Max: {character.MaxHitPoints}"
         };
-        _valueLabel = new Label(0, 50, this.Width, 15)
+        _valueLabel = new Label(20, 50, this.Width - 40, 25)
         {
-            BackColor = Color.Transparent,
+            BackColor = Color.White,
             TextColor = Color.Black,
             Font = largeFont,
             VerticalAlignment = VerticalAlignment.Center,
