@@ -15,13 +15,13 @@ public class DisplayController
         RotationType displayRotation,
         Character character)
     {
-        _screen = new DisplayScreen(display)
+        _screen = new DisplayScreen(display, displayRotation)
         {
             BackgroundColor = Color.White
         };
 
-        _sheet = new TestSheet();
-        //        _sheet = new DccHalflingSheet(character as Halfling);
+        //_sheet = new TestSheet();
+        _sheet = new DccHalflingSheet(character as Halfling);
         var page = _sheet.CurrentPage;
 
         Resolver.Log.Info($"Showing initial page of {_sheet.GetType().Name}...");

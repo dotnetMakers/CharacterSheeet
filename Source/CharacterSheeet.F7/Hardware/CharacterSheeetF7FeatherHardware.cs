@@ -9,7 +9,7 @@ namespace CharacterSheeet.F7;
 
 internal class CharacterSheeetF7FeatherHardware : ICharacterSheeetHardware
 {
-    public RotationType DisplayRotation => RotationType.Normal;
+    public RotationType DisplayRotation => RotationType._90Degrees;
     public IButton? RightButton => null;
     public IButton? LeftButton => null;
     public IButton? UpButton => null;
