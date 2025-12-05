@@ -6,10 +6,10 @@ namespace CharacterSheeet.Core;
 
 internal class AttributeLayout : AbsoluteLayout
 {
-    Label _nameLabel;
-    Label _modifierLabel;
-    Label _valueLabel;
-    Box _valueBox;
+    private readonly Label _nameLabel;
+    private readonly Label _modifierLabel;
+    private readonly Label _valueLabel;
+    private readonly Box _valueBox;
 
     public AttributeLayout(string name, int left, int top, int value, int modifier)
         : base(left, top, 210, 60)
@@ -19,7 +19,7 @@ internal class AttributeLayout : AbsoluteLayout
 
         _nameLabel = new Label(0, 0, 150, this.Height / 2)
         {
-            BackColor = Color.Black,
+            BackgroundColor =Color.Black,
             TextColor = Color.White,
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Center,
@@ -28,7 +28,7 @@ internal class AttributeLayout : AbsoluteLayout
         };
         _modifierLabel = new Label(0, _nameLabel.Bottom, _nameLabel.Width, this.Height - _nameLabel.Height)
         {
-            BackColor = Color.White,
+            BackgroundColor =Color.White,
             TextColor = Color.Black,
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Center,
@@ -36,12 +36,12 @@ internal class AttributeLayout : AbsoluteLayout
         };
         _valueBox = new Box(_nameLabel.Right, 0, this.Width - _nameLabel.Width, this.Height)
         {
-            ForeColor = Color.Black,
+            ForegroundColor = Color.Black,
             IsFilled = false
         };
         _valueLabel = new Label(_valueBox.Left + 2, _valueBox.Top + 2, _valueBox.Width - 4, _valueBox.Height - 4)
         {
-            BackColor = Color.White,
+            BackgroundColor =Color.White,
             TextColor = Color.Black,
             Font = largeFont,
             VerticalAlignment = VerticalAlignment.Center,

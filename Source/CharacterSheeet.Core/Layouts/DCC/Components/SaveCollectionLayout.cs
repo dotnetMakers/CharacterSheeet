@@ -6,13 +6,13 @@ namespace CharacterSheeet.Core;
 internal class SaveCollectionLayout : AbsoluteLayout
 {
     public SaveCollectionLayout(int left, int top, Character character)
-        : base(left, top, 340, 65 * 5 + 60)
+        : base(left, top, 340, LayoutConstants.AttributeBlockHeight * 5 + 60)
     {
         var saves = character.GetCalculatedSaves();
 
-        var refs = new SaveLayout("Ref", $"{saves.Ref:+#;-#;+0}", left, top);
-        var fort = new SaveLayout("Fort", $"{saves.Fort:+#;-#;+0}", left, top + 65);
-        var will = new SaveLayout("Will", $"{saves.Will:+#;-#;+0}", left, top + 65 * 2);
+        var refs = new SaveLayout("Ref", $"{saves.Ref:+#;-#;+0}", 0, 0);
+        var fort = new SaveLayout("Fort", $"{saves.Fort:+#;-#;+0}", 0, LayoutConstants.AttributeBlockHeight);
+        var will = new SaveLayout("Will", $"{saves.Will:+#;-#;+0}", 0, LayoutConstants.AttributeBlockHeight * 2);
 
         this.Controls.Add(refs, fort, will);
 

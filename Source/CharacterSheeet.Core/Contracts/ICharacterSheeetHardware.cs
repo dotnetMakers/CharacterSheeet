@@ -10,6 +10,7 @@ public interface ICharacterSheeetHardware
     IButton? RightButton { get; }
     IButton? UpButton { get; }
     IButton? DownButton { get; }
+    IButton? CenterButton { get; }
 
     // complex hardware
     IPixelDisplay? Display { get; }

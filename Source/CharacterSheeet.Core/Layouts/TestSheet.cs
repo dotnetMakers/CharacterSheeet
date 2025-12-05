@@ -12,16 +12,16 @@ internal class TestSheet : Sheet
     {
     }
 
-    private static IEnumerable<MicroLayout> GenerateLayouts()
+    private static IEnumerable<ILayout> GenerateLayouts()
     {
-        return new MicroLayout[]
+        return new ILayout[]
         {
             GeneratePage1(),
             GeneratePage2(),
         };
     }
 
-    private static MicroLayout GeneratePage1()
+    private static ILayout GeneratePage1()
     {
         var layout = new AbsoluteLayout(300, 300);
 
@@ -31,7 +31,7 @@ internal class TestSheet : Sheet
             new Label(10, 10, 250, 30)
             {
                 TextColor = Color.White,
-                BackColor = Color.Black,
+                BackgroundColor = Color.Black,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
                 Font = largeFont,
@@ -41,7 +41,7 @@ internal class TestSheet : Sheet
         return layout;
     }
 
-    private static MicroLayout GeneratePage2()
+    private static ILayout GeneratePage2()
     {
         var layout = new AbsoluteLayout(480, 480);
 
@@ -51,7 +51,7 @@ internal class TestSheet : Sheet
             new Label(0, 0, 200, 30)
             {
                 TextColor = Color.White,
-                BackColor = Color.Black,
+                BackgroundColor = Color.Black,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
                 Font = largeFont,

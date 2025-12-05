@@ -6,10 +6,10 @@ namespace CharacterSheeet.Core;
 
 internal class SaveLayout : AbsoluteLayout
 {
-    Label _nameLabel;
-    Label _saveLabel;
-    Label _valueLabel;
-    Circle _valueCircle;
+    private readonly Label _nameLabel;
+    private readonly Label _saveLabel;
+    private readonly Label _valueLabel;
+    private readonly Circle _valueCircle;
 
     public SaveLayout(string name, string value, int left, int top)
         : base(left, top, 120, 60)
@@ -19,7 +19,7 @@ internal class SaveLayout : AbsoluteLayout
 
         _nameLabel = new Label(0, 0, 120, 30)
         {
-            BackColor = Color.Black,
+            BackgroundColor = Color.Black,
             TextColor = Color.White,
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Bottom,
@@ -28,7 +28,7 @@ internal class SaveLayout : AbsoluteLayout
         };
         _saveLabel = new Label(0, 30, 120, 30)
         {
-            BackColor = Color.Black,
+            BackgroundColor = Color.Black,
             TextColor = Color.White,
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Top,
@@ -37,7 +37,7 @@ internal class SaveLayout : AbsoluteLayout
         };
         _valueLabel = new Label(0, 0, 60, 60)
         {
-            BackColor = Color.Transparent,
+            BackgroundColor = Color.Transparent,
             TextColor = Color.Black,
             Font = largeFont,
             VerticalAlignment = VerticalAlignment.Center,
@@ -46,7 +46,7 @@ internal class SaveLayout : AbsoluteLayout
         };
         _valueCircle = new Circle(34, 30, 25)
         {
-            ForeColor = Color.White,
+            ForegroundColor = Color.White,
             IsFilled = true
         };
 

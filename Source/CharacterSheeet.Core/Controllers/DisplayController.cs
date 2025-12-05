@@ -36,10 +36,15 @@ public class DisplayController
         var page = _sheet.NextPage();
         if (page != null)
         {
+            Resolver.Log.Info("Page is not null.  Changing.");
             _screen.BeginUpdate();
             _screen.Controls.Clear();
             _screen.Controls.Add(page);
             _screen.EndUpdate();
+        }
+        else
+        {
+            Resolver.Log.Info("Page is null.");
         }
     }
 

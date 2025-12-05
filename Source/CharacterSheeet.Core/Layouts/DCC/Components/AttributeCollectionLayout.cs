@@ -1,24 +1,26 @@
 ﻿using CharacterSheeet.Dcc;
 using Meadow.Foundation.Graphics.MicroLayout;
 
+using Constants = CharacterSheeet.Dcc.LayoutConstants;
+
 namespace CharacterSheeet.Core;
 
 internal class AttributeCollectionLayout : AbsoluteLayout
 {
     public AttributeCollectionLayout(int left, int top, Character character)
-        : base(left, top, 60, 65 * 6)
+        : base(left, top, 60, Constants.AttributeBlockHeight * 6)
     {
-        var strength = new AttributeLayout("Strength", left, top + 0,
+        var strength = new AttributeLayout("Strength", 0, 0,
             character.Strength, character.GetAbilityModifier(character.Strength));
-        var agility = new AttributeLayout("Agility", left, top + 65,
+        var agility = new AttributeLayout("Agility", 0, Constants.AttributeBlockHeight,
             character.Agility, character.GetAbilityModifier(character.Agility));
-        var stamina = new AttributeLayout("Stamina", left, top + 65 * 2,
+        var stamina = new AttributeLayout("Stamina", 0, Constants.AttributeBlockHeight * 2,
             character.Stamina, character.GetAbilityModifier(character.Stamina));
-        var personality = new AttributeLayout("Personality", left, top + 65 * 3,
+        var personality = new AttributeLayout("Personality", 0, Constants.AttributeBlockHeight * 3,
             character.Personality, character.GetAbilityModifier(character.Personality));
-        var luck = new AttributeLayout("Luck", left, top + 65 * 4,
+        var luck = new AttributeLayout("Luck", 0, Constants.AttributeBlockHeight * 4,
             character.Luck, character.GetAbilityModifier(character.Luck));
-        var intelligence = new AttributeLayout("intelligence", left, top + 65 * 5,
+        var intelligence = new AttributeLayout("intelligence", 0, Constants.AttributeBlockHeight * 5,
             character.Intelligence, character.GetAbilityModifier(character.Intelligence));
 
         Controls.Add(strength, agility, stamina, personality, luck, intelligence);

@@ -22,7 +22,7 @@ internal class EquipmentListLayout : ItemListLayout
             _itemLabels[i] = new Label(3, y, this.Width, 20)
             {
                 TextColor = Color.Black,
-                BackColor = Color.Transparent,
+                BackgroundColor =Color.Transparent,
                 Font = smallFont,
                 HorizontalAlignment = HorizontalAlignment.Left,
                 Text = $"{character.Equipment[i].Quantity} {character.Equipment[i].Name}"

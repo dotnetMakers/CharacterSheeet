@@ -21,10 +21,15 @@ internal class CharacterSheeetHardware : ICharacterSheeetHardware
     public IButton? LeftButton { get; }
     public IButton? UpButton { get; }
     public IButton? DownButton { get; }
+    public IButton? CenterButton { get; }
 
     public CharacterSheeetHardware(Desktop device)
     {
-        device.Display.Resize(480, 800, 1);
+        // var dis = new Epd7in5V2
+        if (device.Display is IResizablePixelDisplay r)
+        {
+            r.Resize(480, 800, 1);
+        }
 
         this.device = device;
 
@@ -35,5 +40,6 @@ internal class CharacterSheeetHardware : ICharacterSheeetHardware
         RightButton = new PushButton(keyboard.Pins.Right.CreateDigitalInterruptPort(InterruptMode.EdgeFalling));
         UpButton = new PushButton(keyboard.Pins.Up.CreateDigitalInterruptPort(InterruptMode.EdgeFalling));
         DownButton = new PushButton(keyboard.Pins.Down.CreateDigitalInterruptPort(InterruptMode.EdgeFalling));
+        CenterButton = new PushButton(keyboard.Pins.Space.CreateDigitalInterruptPort(InterruptMode.EdgeFalling));
     }
 }

@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterSheeet.F7", "CharacterSheeet.F7\CharacterSheeet.F7.csproj", "{9F7D3C5D-1F20-4771-BD7E-2C0578B6AD70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterSheeet.RPi", "CharacterSheeet.RPi\CharacterSheeet.RPi.csproj", "{8F0CD535-7753-4A42-B194-B835E50C9A5F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterSheeet.Desktop", "CharacterSheeet.Desktop\CharacterSheeet.Desktop.csproj", "{2068562E-CBCE-4AB6-B05F-683DA70C70A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterSheeet.Core", "CharacterSheeet.Core\CharacterSheeet.Core.csproj", "{97A526FC-5B04-4372-B19B-15DD5E6B0A38}"
@@ -37,6 +35,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Displays.Silk", "..\..\..\w
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Displays.ePaperWaveShare", "..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Displays.ePaperWaveShare\Driver\Displays.ePaperWaveShare.csproj", "{D33B833C-7864-5D79-CEA3-0B13422129A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meadow.Modbus", "..\..\..\wilderness\Meadow.Modbus\src\Meadow.Modbus\Meadow.Modbus.csproj", "{0A87193D-A58E-B2F8-5639-2ED571AD3B64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensors.Motion.Apds9960", "..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Motion.Apds9960\Driver\Sensors.Motion.Apds9960.csproj", "{C95DC683-016C-C398-468B-D2BDDE260D47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meadow.Units", "..\..\..\wilderness\Meadow.Units\Source\Meadow.Units\Meadow.Units.csproj", "{03C20812-3FC0-A804-06DE-4160C71904F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meadow.Mac", "..\..\..\wilderness\Meadow.Core\Source\implementations\mac\Meadow.Mac\Meadow.Mac.csproj", "{5F38BCB9-51E8-CC44-E5E0-7D8C9B37AEA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meadow.Linux", "..\..\..\wilderness\Meadow.Core\Source\implementations\linux\Meadow.Linux\Meadow.Linux.csproj", "{F0F4F765-5308-6569-0C68-09B680FE9B2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,10 +55,6 @@ Global
 		{9F7D3C5D-1F20-4771-BD7E-2C0578B6AD70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F7D3C5D-1F20-4771-BD7E-2C0578B6AD70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F7D3C5D-1F20-4771-BD7E-2C0578B6AD70}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8F0CD535-7753-4A42-B194-B835E50C9A5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8F0CD535-7753-4A42-B194-B835E50C9A5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8F0CD535-7753-4A42-B194-B835E50C9A5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8F0CD535-7753-4A42-B194-B835E50C9A5F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2068562E-CBCE-4AB6-B05F-683DA70C70A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2068562E-CBCE-4AB6-B05F-683DA70C70A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2068562E-CBCE-4AB6-B05F-683DA70C70A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -119,6 +123,32 @@ Global
 		{D33B833C-7864-5D79-CEA3-0B13422129A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D33B833C-7864-5D79-CEA3-0B13422129A6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D33B833C-7864-5D79-CEA3-0B13422129A6}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0A87193D-A58E-B2F8-5639-2ED571AD3B64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A87193D-A58E-B2F8-5639-2ED571AD3B64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A87193D-A58E-B2F8-5639-2ED571AD3B64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A87193D-A58E-B2F8-5639-2ED571AD3B64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C95DC683-016C-C398-468B-D2BDDE260D47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C95DC683-016C-C398-468B-D2BDDE260D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C95DC683-016C-C398-468B-D2BDDE260D47}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C95DC683-016C-C398-468B-D2BDDE260D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C95DC683-016C-C398-468B-D2BDDE260D47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C95DC683-016C-C398-468B-D2BDDE260D47}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{03C20812-3FC0-A804-06DE-4160C71904F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03C20812-3FC0-A804-06DE-4160C71904F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03C20812-3FC0-A804-06DE-4160C71904F3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{03C20812-3FC0-A804-06DE-4160C71904F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03C20812-3FC0-A804-06DE-4160C71904F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03C20812-3FC0-A804-06DE-4160C71904F3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{5F38BCB9-51E8-CC44-E5E0-7D8C9B37AEA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F38BCB9-51E8-CC44-E5E0-7D8C9B37AEA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F38BCB9-51E8-CC44-E5E0-7D8C9B37AEA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F38BCB9-51E8-CC44-E5E0-7D8C9B37AEA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0F4F765-5308-6569-0C68-09B680FE9B2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0F4F765-5308-6569-0C68-09B680FE9B2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0F4F765-5308-6569-0C68-09B680FE9B2E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F0F4F765-5308-6569-0C68-09B680FE9B2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0F4F765-5308-6569-0C68-09B680FE9B2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0F4F765-5308-6569-0C68-09B680FE9B2E}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -136,6 +166,11 @@ Global
 		{03182579-613D-9867-47EC-733D2885C11F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{88200BE9-62F6-8E77-7CAE-480F86842CB7} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{D33B833C-7864-5D79-CEA3-0B13422129A6} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{0A87193D-A58E-B2F8-5639-2ED571AD3B64} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{C95DC683-016C-C398-468B-D2BDDE260D47} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{03C20812-3FC0-A804-06DE-4160C71904F3} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{5F38BCB9-51E8-CC44-E5E0-7D8C9B37AEA7} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{F0F4F765-5308-6569-0C68-09B680FE9B2E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09135FF6-4397-42E8-B43E-37CB8C9D8510}

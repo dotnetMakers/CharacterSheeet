@@ -5,18 +5,18 @@ namespace CharacterSheeet.Core;
 
 internal class Sheet
 {
-    private List<MicroLayout> _layouts = new();
+    private readonly List<ILayout> _layouts = new();
 
     public int CurrentPageIndex { get; private set; }
 
-    public Sheet(IEnumerable<MicroLayout> layouts)
+    public Sheet(IEnumerable<ILayout> layouts)
     {
         _layouts.AddRange(layouts);
     }
 
-    public MicroLayout CurrentPage => _layouts[CurrentPageIndex];
+    public ILayout CurrentPage => _layouts[CurrentPageIndex];
 
-    public MicroLayout? NextPage()
+    public ILayout? NextPage()
     {
         if (CurrentPageIndex >= _layouts.Count - 1)
         {
@@ -27,7 +27,7 @@ internal class Sheet
         return _layouts[CurrentPageIndex];
     }
 
-    public MicroLayout? PreviousPage()
+    public ILayout? PreviousPage()
     {
         if (CurrentPageIndex <= 0)
         {

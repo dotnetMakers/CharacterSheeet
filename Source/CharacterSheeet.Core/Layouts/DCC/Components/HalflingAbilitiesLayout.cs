@@ -6,8 +6,8 @@ namespace CharacterSheeet.Core;
 
 internal class HalflingAbilitiesLayout : AbsoluteLayout
 {
-    private Label _titleLabel;
-    private Box _boundsBox;
+    private readonly Label _titleLabel;
+    private readonly Box _boundsBox;
 
     public HalflingAbilitiesLayout(int left, int top, int width, int height)
         : base(left, top, width, height)
@@ -17,7 +17,7 @@ internal class HalflingAbilitiesLayout : AbsoluteLayout
 
         _titleLabel = new Label(0, 0, this.Width, 30)
         {
-            BackColor = Color.Black,
+            BackgroundColor =Color.Black,
             TextColor = Color.White,
             Font = largeFont,
             VerticalAlignment = VerticalAlignment.Center,
@@ -27,7 +27,7 @@ internal class HalflingAbilitiesLayout : AbsoluteLayout
 
         _boundsBox = new Box(0, 30, this.Width, this.Height - 30)
         {
-            ForeColor = Color.Black,
+            ForegroundColor = Color.Black,
             IsFilled = false
         };
 

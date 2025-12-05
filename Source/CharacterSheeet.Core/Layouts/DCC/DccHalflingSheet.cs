@@ -1,10 +1,10 @@
-﻿using CharacterSheeet.Dcc;
+﻿using CharacterSheeet.Core;
 using Meadow;
 using Meadow.Foundation.Graphics;
 using Meadow.Foundation.Graphics.MicroLayout;
 using System.Collections.Generic;
 
-namespace CharacterSheeet.Core;
+namespace CharacterSheeet.Dcc;
 
 internal class DccHalflingSheet : Sheet
 {
@@ -16,16 +16,16 @@ internal class DccHalflingSheet : Sheet
         _character = character;
     }
 
-    private static IEnumerable<MicroLayout> GenerateLayouts(Halfling character)
+    private static IEnumerable<ILayout> GenerateLayouts(Halfling character)
     {
-        return new MicroLayout[]
+        return new ILayout[]
         {
             GeneratePage1(character),
             GeneratePage2(character),
         };
     }
 
-    private static MicroLayout GeneratePage2(Halfling character)
+    private static ILayout GeneratePage2(Halfling character)
     {
         var layout = new AbsoluteLayout(480, 800);
         layout.BackgroundColor = Color.White;
@@ -44,7 +44,7 @@ internal class DccHalflingSheet : Sheet
         return layout;
     }
 
-    private static MicroLayout GeneratePage1(Halfling character)
+    private static ILayout GeneratePage1(Halfling character)
     {
         var layout = new AbsoluteLayout(480, 800);
         layout.BackgroundColor = Color.White;
@@ -60,7 +60,7 @@ internal class DccHalflingSheet : Sheet
             new Label(0, 0, 480, 28)
             {
                 TextColor = Color.White,
-                BackColor = Color.Black,
+                BackgroundColor = Color.Black,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
                 Font = largeFont,
@@ -71,7 +71,7 @@ internal class DccHalflingSheet : Sheet
             new Label(5, 30, 240, 12)
             {
                 TextColor = Color.Black,
-                BackColor = Color.Transparent,
+                BackgroundColor = Color.Transparent,
                 Font = medFont,
                 Text = $"Name: {character.Name}"
             });
@@ -79,7 +79,7 @@ internal class DccHalflingSheet : Sheet
             new Label(240, 30, 230, 12)
             {
                 TextColor = Color.Black,
-                BackColor = Color.Transparent,
+                BackgroundColor = Color.Transparent,
                 HorizontalAlignment = HorizontalAlignment.Right,
                 Font = medFont,
                 Text = $"Align: {character.Alignment}"
@@ -89,7 +89,7 @@ internal class DccHalflingSheet : Sheet
             new Label(5, 55, 240, 12)
             {
                 TextColor = Color.Black,
-                BackColor = Color.Transparent,
+                BackgroundColor = Color.Transparent,
                 Font = medFont,
                 Text = $"Title: {character.Title}"
             });
@@ -97,7 +97,7 @@ internal class DccHalflingSheet : Sheet
             new Label(240, 55, 230, 12)
             {
                 TextColor = Color.Black,
-                BackColor = Color.Transparent,
+                BackgroundColor = Color.Transparent,
                 HorizontalAlignment = HorizontalAlignment.Right,
                 Font = medFont,
                 Text = $"Speed: {character.Speed + character.Armor.SpeedPenalty}"
@@ -107,7 +107,7 @@ internal class DccHalflingSheet : Sheet
             new Label(5, 80, 240, 12)
             {
                 TextColor = Color.Black,
-                BackColor = Color.Transparent,
+                BackgroundColor = Color.Transparent,
                 Font = medFont,
                 Text = $"Occupation: {character.Occcupation}"
             });
@@ -115,7 +115,7 @@ internal class DccHalflingSheet : Sheet
             new Label(240, 80, 230, 12)
             {
                 TextColor = Color.Black,
-                BackColor = Color.Transparent,
+                BackgroundColor = Color.Transparent,
                 HorizontalAlignment = HorizontalAlignment.Right,
                 Font = medFont,
                 Text = $"XP: {character.XP}"
@@ -129,9 +129,9 @@ internal class DccHalflingSheet : Sheet
 
 
 
-        layout.Controls.Add(new SaveCollectionLayout(220, attributesTop + 65, character));
+        layout.Controls.Add(new SaveCollectionLayout(223, attributesTop + LayoutConstants.AttributeBlockHeight, character));
 
-        layout.Controls.Add(new SimpleValueLayout("Lucky Roll", character.LuckyRoll, 220, 65 * 4 + attributesTop));
+        layout.Controls.Add(new SimpleValueLayout("Lucky Roll", character.LuckyRoll, 223, LayoutConstants.AttributeBlockHeight * 4 + attributesTop));
 
         // combat
         layout.Controls.Add(new CombatModifiersLayout(350, attributesTop, character));
@@ -139,7 +139,7 @@ internal class DccHalflingSheet : Sheet
         // attribute blocks
         layout.Controls.Add(new AttributeCollectionLayout(5, attributesTop, character));
 
-        layout.Controls.Add(new SimpleValueLayout("Languages", string.Join(',', character.Languages), 220, 65 * 5 + attributesTop, 250));
+        layout.Controls.Add(new SimpleValueLayout("Languages", string.Join(',', character.Languages), 223, LayoutConstants.AttributeBlockHeight * 5 + attributesTop, 250));
 
         var logo = Image.LoadFromResource("CharacterSheeet.Core.Assets.dcc-logo.bmp");
         layout.Controls.Add(new Picture(10, 740, logo.Width, logo.Height, logo));

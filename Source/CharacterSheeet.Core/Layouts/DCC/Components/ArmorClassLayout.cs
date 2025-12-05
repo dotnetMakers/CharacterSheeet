@@ -6,12 +6,12 @@ namespace CharacterSheeet.Dcc;
 
 internal class ArmorClassLayout : AbsoluteLayout
 {
-    private Character _character;
+    private readonly Character _character;
 
-    Label _armorLabel;
-    Label _classLabel;
-    Label _valueLabel;
-    Picture _shield;
+    private readonly Label _armorLabel;
+    private readonly Label _classLabel;
+    private readonly Label _valueLabel;
+    private readonly Picture _shield;
 
     public ArmorClassLayout(int left, int top, Character character)
         : base(left, top, 120, 150)
@@ -25,7 +25,7 @@ internal class ArmorClassLayout : AbsoluteLayout
 
         _armorLabel = new Label(0, 120, this.Width, 15)
         {
-            BackColor = Color.White,
+            BackgroundColor = Color.White,
             TextColor = Color.Black,
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Center,
@@ -34,7 +34,7 @@ internal class ArmorClassLayout : AbsoluteLayout
         };
         _classLabel = new Label(0, _armorLabel.Bottom, this.Width, 15)
         {
-            BackColor = Color.White,
+            BackgroundColor = Color.White,
             TextColor = Color.Black,
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Center,
@@ -43,7 +43,7 @@ internal class ArmorClassLayout : AbsoluteLayout
         };
         _valueLabel = new Label(0, 50, this.Width, 15)
         {
-            BackColor = Color.Transparent,
+            BackgroundColor = Color.Transparent,
             TextColor = Color.Black,
             Font = largeFont,
             VerticalAlignment = VerticalAlignment.Center,

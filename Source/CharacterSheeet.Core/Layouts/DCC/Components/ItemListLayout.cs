@@ -6,9 +6,9 @@ namespace CharacterSheeet.Core;
 
 internal class ItemListLayout : AbsoluteLayout
 {
-    private Label _titleLabel;
-    ListBox _itemList;
-    private Box _boundsBox;
+    private readonly Label _titleLabel;
+    private readonly ListBox _itemList;
+    private readonly Box _boundsBox;
 
     public ItemListLayout(string title, int left, int top, int width, int height)
         : base(left, top, width, height)
@@ -18,7 +18,7 @@ internal class ItemListLayout : AbsoluteLayout
 
         _titleLabel = new Label(0, 0, this.Width, 30)
         {
-            BackColor = Color.Black,
+            BackgroundColor =Color.Black,
             TextColor = Color.White,
             Font = largeFont,
             VerticalAlignment = VerticalAlignment.Center,
@@ -28,7 +28,7 @@ internal class ItemListLayout : AbsoluteLayout
 
         _boundsBox = new Box(0, 30, this.Width, this.Height - 30)
         {
-            ForeColor = Color.Black,
+            ForegroundColor = Color.Black,
             IsFilled = false
         };
 

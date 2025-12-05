@@ -6,9 +6,9 @@ namespace CharacterSheeet.Core;
 
 internal class SimpleValueLayout : AbsoluteLayout
 {
-    private Label _nameLabel;
-    private Label _valueLabel;
-    private Box _boundsBox;
+    private readonly Label _nameLabel;
+    private readonly Label _valueLabel;
+    private readonly Box _boundsBox;
 
     public SimpleValueLayout(string name, string value, int left, int top, int width = 120)
         : base(left, top, width, 60)
@@ -18,7 +18,7 @@ internal class SimpleValueLayout : AbsoluteLayout
 
         _nameLabel = new Label(0, 0, this.Width, 30)
         {
-            BackColor = Color.Black,
+            BackgroundColor =Color.Black,
             TextColor = Color.White,
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Center,
@@ -28,7 +28,7 @@ internal class SimpleValueLayout : AbsoluteLayout
         _valueLabel = new Label(0, 30, this.Width, this.Height - 30)
         {
             TextColor = Color.Black,
-            BackColor = Color.Transparent,
+            BackgroundColor =Color.Transparent,
             Font = largeFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
@@ -36,7 +36,7 @@ internal class SimpleValueLayout : AbsoluteLayout
         };
         _boundsBox = new Box(0, 30, this.Width, this.Height - 30)
         {
-            ForeColor = Color.Black,
+            ForegroundColor = Color.Black,
             IsFilled = false
         };
 

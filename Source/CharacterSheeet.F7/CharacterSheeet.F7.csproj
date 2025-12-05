@@ -21,6 +21,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\..\..\wilderness\Meadow.Core\Source\implementations\f7\Meadow.F7\Meadow.F7.csproj" />
         <ProjectReference Include="..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Displays.ePaperWaveShare\Driver\Displays.ePaperWaveShare.csproj" />
+        <ProjectReference Include="..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Motion.Apds9960\Driver\Sensors.Motion.Apds9960.csproj" />
         <ProjectReference Include="..\CharacterSheeet.Core\CharacterSheeet.Core.csproj" />
     </ItemGroup>
 </Project>

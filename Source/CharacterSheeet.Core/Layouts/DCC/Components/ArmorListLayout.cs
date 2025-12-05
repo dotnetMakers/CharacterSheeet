@@ -7,11 +7,11 @@ namespace CharacterSheeet.Core;
 
 internal class ArmorListLayout : AbsoluteLayout
 {
-    private Label _titleLabel;
-    private Label _armorLabel;
-    private Label _checkLabel;
-    private Label _fumbleLabel;
-    private Box _boundsBox;
+    private readonly Label _titleLabel;
+    private readonly Label _armorLabel;
+    private readonly Label _checkLabel;
+    private readonly Label _fumbleLabel;
+    private readonly Box _boundsBox;
 
     public ArmorListLayout(int left, int top, int width, int height, Character character)
         : base(left, top, width, height)
@@ -21,7 +21,7 @@ internal class ArmorListLayout : AbsoluteLayout
 
         _titleLabel = new Label(0, 0, this.Width, 30)
         {
-            BackColor = Color.Black,
+            BackgroundColor =Color.Black,
             TextColor = Color.White,
             Font = largeFont,
             VerticalAlignment = VerticalAlignment.Center,
@@ -31,7 +31,7 @@ internal class ArmorListLayout : AbsoluteLayout
 
         _armorLabel = new Label(0, _titleLabel.Bottom, this.Width, 20)
         {
-            BackColor = Color.White,
+            BackgroundColor =Color.White,
             TextColor = Color.Black,
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Center,
@@ -41,7 +41,7 @@ internal class ArmorListLayout : AbsoluteLayout
 
         _checkLabel = new Label(0, _armorLabel.Bottom, this.Width, 20)
         {
-            BackColor = Color.White,
+            BackgroundColor =Color.White,
             TextColor = Color.Black,
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Center,
@@ -51,7 +51,7 @@ internal class ArmorListLayout : AbsoluteLayout
 
         _fumbleLabel = new Label(0, _checkLabel.Bottom, this.Width, 20)
         {
-            BackColor = Color.White,
+            BackgroundColor =Color.White,
             TextColor = Color.Black,
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Center,
@@ -61,7 +61,7 @@ internal class ArmorListLayout : AbsoluteLayout
 
         _boundsBox = new Box(0, 30, this.Width, this.Height - 30)
         {
-            ForeColor = Color.Black,
+            ForegroundColor = Color.Black,
             IsFilled = false
         };
 

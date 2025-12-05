@@ -23,7 +23,7 @@ internal class HitPointLayout : AbsoluteLayout
 
         _staticLabel = new Label(0, 120, this.Width, 15)
         {
-            BackColor = Color.White,
+            BackgroundColor =Color.White,
             TextColor = Color.Black,
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Center,
@@ -32,7 +32,7 @@ internal class HitPointLayout : AbsoluteLayout
         };
         _maxLabel = new Label(0, _staticLabel.Bottom, this.Width, 15)
         {
-            BackColor = Color.White,
+            BackgroundColor =Color.White,
             TextColor = Color.Black,
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Center,
@@ -41,7 +41,7 @@ internal class HitPointLayout : AbsoluteLayout
         };
         _valueLabel = new Label(20, 50, this.Width - 40, 25)
         {
-            BackColor = Color.White,
+            BackgroundColor =Color.White,
             TextColor = Color.Black,
             Font = largeFont,
             VerticalAlignment = VerticalAlignment.Center,

@@ -42,7 +42,7 @@ public class MainController
 
         inputController.PreviousPageRequested += OnPreviousPageRequested;
         inputController.NextPageRequested += OnNextPageRequested;
-        inputController.IncrementRequested += OnIncrementRequested;
+        inputController.IncrementRequested += OnPreviousPageRequested; // OnIncrementRequested;
         inputController.DecrementRequested += OnDecrementRequested;
 
         return Task.CompletedTask;

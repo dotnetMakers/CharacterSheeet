@@ -1,0 +1,42 @@
+<Solution>
+  <Folder Name="/_ref/">
+    <Project Path="../../../wilderness/Meadow.Contracts/Source/Meadow.Contracts/Meadow.Contracts.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="../../../wilderness/Meadow.Core/Source/implementations/desktop/Meadow.Desktop/Meadow.Desktop.csproj" />
+    <Project Path="../../../wilderness/Meadow.Core/Source/implementations/f7/Meadow.F7/Meadow.F7.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="../../../wilderness/Meadow.Core/Source/implementations/linux/Meadow.Linux/Meadow.Linux.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="../../../wilderness/Meadow.Core/Source/implementations/mac/Meadow.Mac/Meadow.Mac.csproj" />
+    <Project Path="../../../wilderness/Meadow.Core/Source/implementations/windows/Meadow.Windows/Meadow.Windows.csproj" />
+    <Project Path="../../../wilderness/Meadow.Core/Source/Meadow.Core/Meadow.Core.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="../../../wilderness/Meadow.Foundation/Source/Meadow.Foundation.Core/Meadow.Foundation.Core.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="../../../wilderness/Meadow.Foundation/Source/Meadow.Foundation.Libraries_and_Frameworks/Graphics.MicroGraphics/Driver/Graphics.MicroGraphics.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="../../../wilderness/Meadow.Foundation/Source/Meadow.Foundation.Libraries_and_Frameworks/Graphics.MicroLayout/Driver/Graphics.MicroLayout.csproj" />
+    <Project Path="../../../wilderness/Meadow.Foundation/Source/Meadow.Foundation.Libraries_and_Frameworks/Serialization.MicroJson/Driver/Serialization.MicroJson.csproj" />
+    <Project Path="../../../wilderness/Meadow.Foundation/Source/Meadow.Foundation.Peripherals/Displays.ePaperWaveShare/Driver/Displays.ePaperWaveShare.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="../../../wilderness/Meadow.Foundation/Source/Meadow.Foundation.Peripherals/Displays.Silk/Driver/Displays.Silk.csproj" />
+    <Project Path="../../../wilderness/Meadow.Foundation/Source/Meadow.Foundation.Peripherals/Sensors.Hid.Keyboard/Driver/Sensors.Hid.Keyboard.csproj" />
+    <Project Path="../../../wilderness/Meadow.Foundation/Source/Meadow.Foundation.Peripherals/Sensors.Motion.Apds9960/Driver/Sensors.Motion.Apds9960.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="../../../wilderness/Meadow.Modbus/src/Meadow.Modbus/Meadow.Modbus.csproj" />
+    <Project Path="../../../wilderness/Meadow.Units/Source/Meadow.Units/Meadow.Units.csproj">
+      <Deploy />
+    </Project>
+  </Folder>
+  <Project Path="CharacterSheeet.Core/CharacterSheeet.Core.csproj" />
+  <Project Path="CharacterSheeet.Desktop/CharacterSheeet.Desktop.csproj" />
+  <Project Path="CharacterSheeet.F7/CharacterSheeet.F7.csproj" />
+</Solution>
