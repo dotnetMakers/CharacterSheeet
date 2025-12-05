@@ -40,32 +40,39 @@ public class MainController
             this.hardware.DisplayRotation,
             _character);
 
-        inputController.PreviousPageRequested += OnPreviousPageRequested;
-        inputController.NextPageRequested += OnNextPageRequested;
-        inputController.IncrementRequested += OnPreviousPageRequested; // OnIncrementRequested;
-        inputController.DecrementRequested += OnDecrementRequested;
+        // Left/Right buttons: Navigate through selections
+        inputController.PreviousPageRequested += OnLeftButton;
+        inputController.NextPageRequested += OnRightButton;
+
+        // Up/Down buttons: Modify selected value
+        inputController.IncrementRequested += OnUpButton;
+        inputController.DecrementRequested += OnDownButton;
 
         return Task.CompletedTask;
     }
 
-    private void OnDecrementRequested(object sender, System.EventArgs e)
+    private void OnLeftButton(object sender, System.EventArgs e)
     {
-        _character.CurrentHitPoints--;
+        Resolver.Log.Info("Left button pressed - select previous");
+        displayController.SelectPrevious();
     }
 
-    private void OnIncrementRequested(object sender, System.EventArgs e)
+    private void OnRightButton(object sender, System.EventArgs e)
     {
-        _character.CurrentHitPoints++;
+        Resolver.Log.Info("Right button pressed - select next");
+        displayController.SelectNext();
     }
 
-    private void OnNextPageRequested(object sender, System.EventArgs e)
+    private void OnUpButton(object sender, System.EventArgs e)
     {
-        displayController.NextPage();
+        Resolver.Log.Info("Up button pressed - increment value");
+        displayController.IncrementSelectedValue();
     }
 
-    private void OnPreviousPageRequested(object sender, System.EventArgs e)
+    private void OnDownButton(object sender, System.EventArgs e)
     {
-        displayController.PreviousPage();
+        Resolver.Log.Info("Down button pressed - decrement value");
+        displayController.DecrementSelectedValue();
     }
 
     public async Task Run()

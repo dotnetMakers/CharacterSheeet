@@ -6,6 +6,12 @@ namespace CharacterSheeet.Dcc;
 public abstract class Character : INotifyPropertyChanged
 {
     private int _currentHP;
+    private int _strength;
+    private int _agility;
+    private int _stamina;
+    private int _personality;
+    private int _luck;
+    private int _intelligence;
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -27,12 +33,41 @@ public abstract class Character : INotifyPropertyChanged
     }
     public int MaxHitPoints { get; set; }
 
-    public int Strength { get; set; }
-    public int Agility { get; set; }
-    public int Stamina { get; set; }
-    public int Personality { get; set; }
-    public int Luck { get; set; }
-    public int Intelligence { get; set; }
+    public int Strength
+    {
+        get => _strength;
+        set => this.SetAndRaiseIfChanged(ref _strength, value, args => PropertyChanged?.Invoke(this, args));
+    }
+
+    public int Agility
+    {
+        get => _agility;
+        set => this.SetAndRaiseIfChanged(ref _agility, value, args => PropertyChanged?.Invoke(this, args));
+    }
+
+    public int Stamina
+    {
+        get => _stamina;
+        set => this.SetAndRaiseIfChanged(ref _stamina, value, args => PropertyChanged?.Invoke(this, args));
+    }
+
+    public int Personality
+    {
+        get => _personality;
+        set => this.SetAndRaiseIfChanged(ref _personality, value, args => PropertyChanged?.Invoke(this, args));
+    }
+
+    public int Luck
+    {
+        get => _luck;
+        set => this.SetAndRaiseIfChanged(ref _luck, value, args => PropertyChanged?.Invoke(this, args));
+    }
+
+    public int Intelligence
+    {
+        get => _intelligence;
+        set => this.SetAndRaiseIfChanged(ref _intelligence, value, args => PropertyChanged?.Invoke(this, args));
+    }
 
     public string[] Languages { get; set; }
 

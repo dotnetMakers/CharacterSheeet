@@ -6,12 +6,18 @@ namespace CharacterSheeet.Dcc;
 
 internal class HitPointLayout : AbsoluteLayout
 {
-    Label _staticLabel;
-    Label _maxLabel;
-    Label _valueLabel;
-    Picture _graphic;
+    private readonly Character _character;
+    private readonly Label _staticLabel;
+    private readonly Label _maxLabel;
+    private readonly Label _valueLabel;
+    private readonly Picture _graphic;
 
-    public HitPointLayout(int left, int top, Character character)
+    /// <summary>
+    /// Gets the value label for selection management
+    /// </summary>
+    public Label ValueLabel => _valueLabel;
+
+    public HitPointLayout(int left, int top, Character character, int selectionIndex = -1)
         : base(left, top, 120, 150)
     {
         var smallFont = new Font12x16();
@@ -23,7 +29,7 @@ internal class HitPointLayout : AbsoluteLayout
 
         _staticLabel = new Label(0, 120, this.Width, 15)
         {
-            BackgroundColor =Color.White,
+            BackgroundColor = Color.White,
             TextColor = Color.Black,
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Center,
@@ -32,22 +38,26 @@ internal class HitPointLayout : AbsoluteLayout
         };
         _maxLabel = new Label(0, _staticLabel.Bottom, this.Width, 15)
         {
-            BackgroundColor =Color.White,
+            BackgroundColor = Color.White,
             TextColor = Color.Black,
             Font = smallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = $"Max: {character.MaxHitPoints}"
         };
-        _valueLabel = new Label(20, 50, this.Width - 40, 25)
+        _valueLabel = new Label((this.Width - 50) / 2, 50, 50, 28)
         {
-            BackgroundColor =Color.White,
+            BackgroundColor = Color.White,
             TextColor = Color.Black,
             Font = largeFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
-            Text = character.CurrentHitPoints.ToString()
+            Text = character.CurrentHitPoints.ToString(),
+            IsSelectable = selectionIndex >= 0,
+            SelectionIndex = selectionIndex
         };
+
+        _character = character;
 
         this.Controls.Add(_graphic, _staticLabel, _maxLabel, _valueLabel);
 
@@ -56,12 +66,34 @@ internal class HitPointLayout : AbsoluteLayout
             switch (e.PropertyName)
             {
                 case nameof(Character.MaxHitPoints):
-                    _valueLabel.Text = $"Max: {character.MaxHitPoints}";
+                    _maxLabel.Text = $"Max: {character.MaxHitPoints}";
                     break;
                 case nameof(Character.CurrentHitPoints):
                     _valueLabel.Text = character.CurrentHitPoints.ToString();
                     break;
             }
         };
+    }
+
+    /// <summary>
+    /// Increments the current hit points
+    /// </summary>
+    public void IncrementValue()
+    {
+        if (_character.CurrentHitPoints < _character.MaxHitPoints)
+        {
+            _character.CurrentHitPoints++;
+        }
+    }
+
+    /// <summary>
+    /// Decrements the current hit points
+    /// </summary>
+    public void DecrementValue()
+    {
+        if (_character.CurrentHitPoints > 0)
+        {
+            _character.CurrentHitPoints--;
+        }
     }
 }

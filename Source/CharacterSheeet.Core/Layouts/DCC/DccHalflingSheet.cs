@@ -9,18 +9,26 @@ namespace CharacterSheeet.Dcc;
 internal class DccHalflingSheet : Sheet
 {
     private readonly Halfling _character;
+    public ArmorClassLayout ArmorClass { get; private set; }
+    public HitPointLayout HitPoints { get; private set; }
+    public AttributeCollectionLayout Attributes { get; private set; }
 
     public DccHalflingSheet(Halfling character)
-        : base(GenerateLayouts(character))
+        : base(GenerateLayouts(character, out var ac, out var hp, out var attr))
     {
         _character = character;
+        ArmorClass = ac;
+        HitPoints = hp;
+        Attributes = attr;
     }
 
-    private static IEnumerable<ILayout> GenerateLayouts(Halfling character)
+    private static IEnumerable<ILayout> GenerateLayouts(Halfling character,
+        out ArmorClassLayout armorClass, out HitPointLayout hitPoints, out AttributeCollectionLayout attributes)
     {
+        var page1 = GeneratePage1(character, out armorClass, out hitPoints, out attributes);
         return new ILayout[]
         {
-            GeneratePage1(character),
+            page1,
             GeneratePage2(character),
         };
     }
@@ -44,7 +52,8 @@ internal class DccHalflingSheet : Sheet
         return layout;
     }
 
-    private static ILayout GeneratePage1(Halfling character)
+    private static ILayout GeneratePage1(Halfling character,
+        out ArmorClassLayout armorClass, out HitPointLayout hitPoints, out AttributeCollectionLayout attributes)
     {
         var layout = new AbsoluteLayout(480, 800);
         layout.BackgroundColor = Color.White;
@@ -122,12 +131,17 @@ internal class DccHalflingSheet : Sheet
             });
 
 
-        layout.Controls.Add(new ArmorClassLayout(5, 170, character));
-        layout.Controls.Add(new HitPointLayout(125, 170, character));
+        // Selectable controls with indices:
+        // 0 = Armor Class
+        // 1 = Hit Points
+        // 2-7 = Attributes (Str, Agi, Sta, Per, Lck, Int)
+        armorClass = new ArmorClassLayout(5, 170, character, selectionIndex: 0);
+        hitPoints = new HitPointLayout(125, 170, character, selectionIndex: 1);
+
+        layout.Controls.Add(armorClass);
+        layout.Controls.Add(hitPoints);
 
         layout.Controls.Add(new CombatBasicsLayout(260, 140, character));
-
-
 
         layout.Controls.Add(new SaveCollectionLayout(223, attributesTop + LayoutConstants.AttributeBlockHeight, character));
 
@@ -136,8 +150,9 @@ internal class DccHalflingSheet : Sheet
         // combat
         layout.Controls.Add(new CombatModifiersLayout(350, attributesTop, character));
 
-        // attribute blocks
-        layout.Controls.Add(new AttributeCollectionLayout(5, attributesTop, character));
+        // attribute blocks (selection indices 2-7)
+        attributes = new AttributeCollectionLayout(5, attributesTop, character, startingSelectionIndex: 2);
+        layout.Controls.Add(attributes);
 
         layout.Controls.Add(new SimpleValueLayout("Languages", string.Join(',', character.Languages), 223, LayoutConstants.AttributeBlockHeight * 5 + attributesTop, 250));
 

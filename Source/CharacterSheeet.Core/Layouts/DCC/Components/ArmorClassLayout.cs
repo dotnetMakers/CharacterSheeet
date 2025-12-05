@@ -13,7 +13,12 @@ internal class ArmorClassLayout : AbsoluteLayout
     private readonly Label _valueLabel;
     private readonly Picture _shield;
 
-    public ArmorClassLayout(int left, int top, Character character)
+    /// <summary>
+    /// Gets the value label for selection management
+    /// </summary>
+    public Label ValueLabel => _valueLabel;
+
+    public ArmorClassLayout(int left, int top, Character character, int selectionIndex = -1)
         : base(left, top, 120, 150)
     {
         var smallFont = new Font12x16();
@@ -41,17 +46,21 @@ internal class ArmorClassLayout : AbsoluteLayout
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = "Class"
         };
-        _valueLabel = new Label(0, 50, this.Width, 15)
+        _valueLabel = new Label((this.Width - 50) / 2, 50, 50, 28)
         {
-            BackgroundColor = Color.Transparent,
+            BackgroundColor = Color.White,
             TextColor = Color.Black,
             Font = largeFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
-            Text = character.ArmorClass.ToString()
+            Text = character.ArmorClass.ToString(),
+            IsSelectable = selectionIndex >= 0,
+            SelectionIndex = selectionIndex
         };
 
         this.Controls.Add(_shield, _armorLabel, _classLabel, _valueLabel);
+
+        _character = character;
 
         character.PropertyChanged += (s, e) =>
         {
@@ -62,5 +71,23 @@ internal class ArmorClassLayout : AbsoluteLayout
                     break;
             }
         };
+    }
+
+    /// <summary>
+    /// Increments the armor class value (currently read-only, calculated from stats)
+    /// </summary>
+    public void IncrementValue()
+    {
+        // AC is calculated, so this would need to modify underlying stats
+        // For now, we'll leave this as read-only
+    }
+
+    /// <summary>
+    /// Decrements the armor class value (currently read-only, calculated from stats)
+    /// </summary>
+    public void DecrementValue()
+    {
+        // AC is calculated, so this would need to modify underlying stats
+        // For now, we'll leave this as read-only
     }
 }
