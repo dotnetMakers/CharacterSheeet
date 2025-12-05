@@ -16,14 +16,11 @@ internal class ArmorListLayout : AbsoluteLayout
     public ArmorListLayout(int left, int top, int width, int height, Character character)
         : base(left, top, width, height)
     {
-        var smallFont = new Font8x12();
-        var largeFont = new Font12x16();
-
         _titleLabel = new Label(0, 0, this.Width, 30)
         {
-            BackgroundColor =Color.Black,
+            BackgroundColor = Color.Black,
             TextColor = Color.White,
-            Font = largeFont,
+            Font = LayoutConstants.SmallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = "Armor"
@@ -31,9 +28,9 @@ internal class ArmorListLayout : AbsoluteLayout
 
         _armorLabel = new Label(0, _titleLabel.Bottom, this.Width, 20)
         {
-            BackgroundColor =Color.White,
+            BackgroundColor = Color.White,
             TextColor = Color.Black,
-            Font = smallFont,
+            Font = LayoutConstants.SmallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = $"{character.Armor.Name}({character.Armor.ACBonus:+#;-#;+0})"
@@ -41,9 +38,9 @@ internal class ArmorListLayout : AbsoluteLayout
 
         _checkLabel = new Label(0, _armorLabel.Bottom, this.Width, 20)
         {
-            BackgroundColor =Color.White,
+            BackgroundColor = Color.White,
             TextColor = Color.Black,
-            Font = smallFont,
+            Font = LayoutConstants.SmallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = $"Check penalty ({character.Armor.CheckPenalty:+#;-#;+0})"
@@ -51,9 +48,9 @@ internal class ArmorListLayout : AbsoluteLayout
 
         _fumbleLabel = new Label(0, _checkLabel.Bottom, this.Width, 20)
         {
-            BackgroundColor =Color.White,
+            BackgroundColor = Color.White,
             TextColor = Color.Black,
-            Font = smallFont,
+            Font = LayoutConstants.SmallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = $"Fumble die ({character.Armor.FumbleDie})"

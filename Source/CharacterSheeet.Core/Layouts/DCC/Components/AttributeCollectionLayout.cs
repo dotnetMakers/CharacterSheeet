@@ -28,18 +28,19 @@ internal class AttributeCollectionLayout : AbsoluteLayout
     {
         _character = character;
 
+        // Pass normalValue, currentValue (starting the same), modifier, selectionIndex
         _strength = new AttributeLayout("Strength", 0, 0,
-            character.Strength, character.GetAbilityModifier(character.Strength), startingSelectionIndex + 0);
+            character.Strength, character.Strength, character.GetAbilityModifier(character.Strength), startingSelectionIndex + 0);
         _agility = new AttributeLayout("Agility", 0, Constants.AttributeBlockHeight,
-            character.Agility, character.GetAbilityModifier(character.Agility), startingSelectionIndex + 1);
+            character.Agility, character.Agility, character.GetAbilityModifier(character.Agility), startingSelectionIndex + 1);
         _stamina = new AttributeLayout("Stamina", 0, Constants.AttributeBlockHeight * 2,
-            character.Stamina, character.GetAbilityModifier(character.Stamina), startingSelectionIndex + 2);
+            character.Stamina, character.Stamina, character.GetAbilityModifier(character.Stamina), startingSelectionIndex + 2);
         _personality = new AttributeLayout("Personality", 0, Constants.AttributeBlockHeight * 3,
-            character.Personality, character.GetAbilityModifier(character.Personality), startingSelectionIndex + 3);
+            character.Personality, character.Personality, character.GetAbilityModifier(character.Personality), startingSelectionIndex + 3);
         _luck = new AttributeLayout("Luck", 0, Constants.AttributeBlockHeight * 4,
-            character.Luck, character.GetAbilityModifier(character.Luck), startingSelectionIndex + 4);
+            character.Luck, character.Luck, character.GetAbilityModifier(character.Luck), startingSelectionIndex + 4);
         _intelligence = new AttributeLayout("Intelligence", 0, Constants.AttributeBlockHeight * 5,
-            character.Intelligence, character.GetAbilityModifier(character.Intelligence), startingSelectionIndex + 5);
+            character.Intelligence, character.Intelligence, character.GetAbilityModifier(character.Intelligence), startingSelectionIndex + 5);
 
         // Wire up ValueChanged events to update character model
         _strength.ValueChanged += (s, v) => character.Strength = v;

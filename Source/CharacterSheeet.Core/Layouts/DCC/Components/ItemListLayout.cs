@@ -1,4 +1,5 @@
-﻿using Meadow;
+﻿using CharacterSheeet.Dcc;
+using Meadow;
 using Meadow.Foundation.Graphics;
 using Meadow.Foundation.Graphics.MicroLayout;
 
@@ -13,14 +14,11 @@ internal class ItemListLayout : AbsoluteLayout
     public ItemListLayout(string title, int left, int top, int width, int height)
         : base(left, top, width, height)
     {
-        var smallFont = new Font8x12();
-        var largeFont = new Font12x16();
-
         _titleLabel = new Label(0, 0, this.Width, 30)
         {
-            BackgroundColor =Color.Black,
+            BackgroundColor = Color.Black,
             TextColor = Color.White,
-            Font = largeFont,
+            Font = LayoutConstants.SmallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = title
@@ -32,7 +30,7 @@ internal class ItemListLayout : AbsoluteLayout
             IsFilled = false
         };
 
-        _itemList = new ListBox(0, 30, this.Width, this.Height - 30, smallFont)
+        _itemList = new ListBox(0, 30, this.Width, this.Height - 30, LayoutConstants.XSmallFont)
         {
             BackgroundColor = Color.Transparent,
             SelectedRowColor = Color.Transparent,

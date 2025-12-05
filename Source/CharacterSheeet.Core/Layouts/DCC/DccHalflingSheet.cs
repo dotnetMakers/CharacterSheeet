@@ -60,10 +60,6 @@ internal class DccHalflingSheet : Sheet
 
         var attributesTop = 350;
 
-        var smallFont = new Font8x16();
-        var medFont = new Font12x20();
-        var largeFont = new Font16x24();
-
         // title block
         layout.Controls.Add(
             new Label(0, 0, 480, 28)
@@ -72,7 +68,7 @@ internal class DccHalflingSheet : Sheet
                 BackgroundColor = Color.Black,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
-                Font = largeFont,
+                Font = LayoutConstants.LargeFont,
                 Text = $"LEVEL {character.Level} {character.Class.ToUpper()}"
             });
 
@@ -81,7 +77,7 @@ internal class DccHalflingSheet : Sheet
             {
                 TextColor = Color.Black,
                 BackgroundColor = Color.Transparent,
-                Font = medFont,
+                Font = LayoutConstants.MediumFont,
                 Text = $"Name: {character.Name}"
             });
         layout.Controls.Add(
@@ -90,7 +86,7 @@ internal class DccHalflingSheet : Sheet
                 TextColor = Color.Black,
                 BackgroundColor = Color.Transparent,
                 HorizontalAlignment = HorizontalAlignment.Right,
-                Font = medFont,
+                Font = LayoutConstants.MediumFont,
                 Text = $"Align: {character.Alignment}"
             });
 
@@ -99,7 +95,7 @@ internal class DccHalflingSheet : Sheet
             {
                 TextColor = Color.Black,
                 BackgroundColor = Color.Transparent,
-                Font = medFont,
+                Font = LayoutConstants.MediumFont,
                 Text = $"Title: {character.Title}"
             });
         layout.Controls.Add(
@@ -108,7 +104,7 @@ internal class DccHalflingSheet : Sheet
                 TextColor = Color.Black,
                 BackgroundColor = Color.Transparent,
                 HorizontalAlignment = HorizontalAlignment.Right,
-                Font = medFont,
+                Font = LayoutConstants.MediumFont,
                 Text = $"Speed: {character.Speed + character.Armor.SpeedPenalty}"
             });
 
@@ -117,7 +113,7 @@ internal class DccHalflingSheet : Sheet
             {
                 TextColor = Color.Black,
                 BackgroundColor = Color.Transparent,
-                Font = medFont,
+                Font = LayoutConstants.MediumFont,
                 Text = $"Occupation: {character.Occcupation}"
             });
         layout.Controls.Add(
@@ -126,7 +122,7 @@ internal class DccHalflingSheet : Sheet
                 TextColor = Color.Black,
                 BackgroundColor = Color.Transparent,
                 HorizontalAlignment = HorizontalAlignment.Right,
-                Font = medFont,
+                Font = LayoutConstants.MediumFont,
                 Text = $"XP: {character.XP}"
             });
 

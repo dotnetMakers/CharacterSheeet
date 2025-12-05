@@ -28,8 +28,6 @@ internal class CombatBasicsLayout : AbsoluteLayout
     {
         _character = character;
 
-        var font = new Font8x16();
-
         _boundsBox = new Box(0, 0, this.Width, this.Height)
         {
             ForegroundColor = Color.Black,
@@ -38,105 +36,105 @@ internal class CombatBasicsLayout : AbsoluteLayout
         _titleLabel = new Label(0, 0, this.Width, 30)
         {
             TextColor = Color.White,
-            BackgroundColor =Color.Black,
+            BackgroundColor = Color.Black,
             HorizontalAlignment = HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center,
-            Font = font,
+            Font = LayoutConstants.XSmallFont,
             Text = "Combat Basics"
         };
 
         _initiativeLabel = new Label(5, 32, 140, 30)
         {
             TextColor = Color.Black,
-            BackgroundColor =Color.Transparent,
+            BackgroundColor = Color.Transparent,
             HorizontalAlignment = HorizontalAlignment.Left,
             VerticalAlignment = VerticalAlignment.Center,
-            Font = font,
+            Font = LayoutConstants.XSmallFont,
             Text = "Initiative:"
         };
         _initiativeValueLabel = new Label(130, 32, 70, 30)
         {
             TextColor = Color.Black,
-            BackgroundColor =Color.Transparent,
+            BackgroundColor = Color.Transparent,
             HorizontalAlignment = HorizontalAlignment.Right,
             VerticalAlignment = VerticalAlignment.Center,
-            Font = font,
+            Font = LayoutConstants.XSmallFont,
             Text = $"{character.InitiativeModifier:+#;-#}"
         };
 
         _actionDiceLabel = new Label(5, 60, 140, 30)
         {
             TextColor = Color.Black,
-            BackgroundColor =Color.Transparent,
+            BackgroundColor = Color.Transparent,
             HorizontalAlignment = HorizontalAlignment.Left,
             VerticalAlignment = VerticalAlignment.Center,
-            Font = font,
+            Font = LayoutConstants.XSmallFont,
             Text = "Action Dice:"
         };
         _actionDiceValueLabel = new Label(130, 60, 70, 30)
         {
             TextColor = Color.Black,
-            BackgroundColor =Color.Transparent,
+            BackgroundColor = Color.Transparent,
             HorizontalAlignment = HorizontalAlignment.Right,
             VerticalAlignment = VerticalAlignment.Center,
-            Font = font,
+            Font = LayoutConstants.XSmallFont,
             Text = "d16/d20"
         };
 
         _attackLabel = new Label(5, 90, 140, 30)
         {
             TextColor = Color.Black,
-            BackgroundColor =Color.Transparent,
+            BackgroundColor = Color.Transparent,
             HorizontalAlignment = HorizontalAlignment.Left,
             VerticalAlignment = VerticalAlignment.Center,
-            Font = font,
+            Font = LayoutConstants.XSmallFont,
             Text = "Attack:"
         };
         _attackValueLabel = new Label(130, 90, 70, 30)
         {
             TextColor = Color.Black,
-            BackgroundColor =Color.Transparent,
+            BackgroundColor = Color.Transparent,
             HorizontalAlignment = HorizontalAlignment.Right,
             VerticalAlignment = VerticalAlignment.Center,
-            Font = font,
+            Font = LayoutConstants.XSmallFont,
             Text = "+1/+2"
         };
 
         _critDieLabel = new Label(5, 120, 140, 30)
         {
             TextColor = Color.Black,
-            BackgroundColor =Color.Transparent,
+            BackgroundColor = Color.Transparent,
             HorizontalAlignment = HorizontalAlignment.Left,
             VerticalAlignment = VerticalAlignment.Center,
-            Font = font,
+            Font = LayoutConstants.XSmallFont,
             Text = "Crit die:"
         };
         _critDieValueLabel = new Label(130, 120, 70, 30)
         {
             TextColor = Color.Black,
-            BackgroundColor =Color.Transparent,
+            BackgroundColor = Color.Transparent,
             HorizontalAlignment = HorizontalAlignment.Right,
             VerticalAlignment = VerticalAlignment.Center,
-            Font = font,
+            Font = LayoutConstants.XSmallFont,
             Text = "d8"
         };
 
         _critTableLabel = new Label(5, 150, 140, 30)
         {
             TextColor = Color.Black,
-            BackgroundColor =Color.Transparent,
+            BackgroundColor = Color.Transparent,
             HorizontalAlignment = HorizontalAlignment.Left,
             VerticalAlignment = VerticalAlignment.Center,
-            Font = font,
+            Font = LayoutConstants.XSmallFont,
             Text = "Crit table:"
         };
         _critTableValueLabel = new Label(130, 150, 70, 30)
         {
             TextColor = Color.Black,
-            BackgroundColor =Color.Transparent,
+            BackgroundColor = Color.Transparent,
             HorizontalAlignment = HorizontalAlignment.Right,
             VerticalAlignment = VerticalAlignment.Center,
-            Font = font,
+            Font = LayoutConstants.XSmallFont,
             Text = "IV"
         };
 

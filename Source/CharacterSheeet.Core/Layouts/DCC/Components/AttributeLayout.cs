@@ -1,4 +1,5 @@
-﻿using Meadow;
+﻿using CharacterSheeet.Dcc;
+using Meadow;
 using Meadow.Foundation.Graphics;
 using Meadow.Foundation.Graphics.MicroLayout;
 
@@ -8,37 +9,36 @@ internal class AttributeLayout : AbsoluteLayout
 {
     private readonly Label _nameLabel;
     private readonly Label _modifierLabel;
-    private readonly Label _valueLabel;
+    private readonly Label _currentValueLabel;
+    private readonly Label _normalValueLabel;
     private readonly Box _valueBox;
     private readonly string _attributeName;
     private int _currentValue;
+    private readonly int _normalValue;
     private int _currentModifier;
 
     /// <summary>
-    /// Gets the value label for selection management
+    /// Gets the current value label for selection management
     /// </summary>
-    public Label ValueLabel => _valueLabel;
+    public Label ValueLabel => _currentValueLabel;
 
-    public AttributeLayout(string name, int left, int top, int value, int modifier, int selectionIndex = -1)
+    public AttributeLayout(string name, int left, int top, int normalValue, int currentValue, int modifier, int selectionIndex = -1)
         : base(left, top, 210, 60)
     {
-        var smallFont = new Font12x16();
-        var largeFont = new Font16x24();
-
         _nameLabel = new Label(0, 0, 150, this.Height / 2)
         {
-            BackgroundColor =Color.Black,
+            BackgroundColor = Color.Black,
             TextColor = Color.White,
-            Font = smallFont,
+            Font = LayoutConstants.SmallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Left,
             Text = name
         };
         _modifierLabel = new Label(0, _nameLabel.Bottom, _nameLabel.Width, this.Height - _nameLabel.Height)
         {
-            BackgroundColor =Color.White,
+            BackgroundColor = Color.White,
             TextColor = Color.Black,
-            Font = smallFont,
+            Font = LayoutConstants.SmallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Left
         };
@@ -47,28 +47,43 @@ internal class AttributeLayout : AbsoluteLayout
             ForegroundColor = Color.Black,
             IsFilled = false
         };
-        _valueLabel = new Label(_valueBox.Left + 2, _valueBox.Top + 2, _valueBox.Width - 4, _valueBox.Height - 4)
+
+        // Current value - upper left, larger, selectable
+        _currentValueLabel = new Label(_valueBox.Left + 4, _valueBox.Top + 2, 30, 28)
         {
             BackgroundColor = Color.White,
             TextColor = Color.Black,
-            Font = largeFont,
-            VerticalAlignment = VerticalAlignment.Center,
-            HorizontalAlignment = HorizontalAlignment.Center,
+            Font = LayoutConstants.LargeFont,
+            VerticalAlignment = VerticalAlignment.Top,
+            HorizontalAlignment = HorizontalAlignment.Left,
             IsSelectable = selectionIndex >= 0,
             SelectionIndex = selectionIndex
         };
 
-        _attributeName = name;
-        this.Controls.Add(_nameLabel, _modifierLabel, _valueBox, _valueLabel);
+        // Normal value - lower right, smaller, not selectable
+        _normalValueLabel = new Label(_valueBox.Right - 24, _valueBox.Bottom - 18, 20, 14)
+        {
+            BackgroundColor = Color.White,
+            TextColor = Color.Gray,
+            Font = LayoutConstants.SmallFont,
+            VerticalAlignment = VerticalAlignment.Bottom,
+            HorizontalAlignment = HorizontalAlignment.Right
+        };
 
-        SetValue(value, modifier);
+        _attributeName = name;
+        _normalValue = normalValue;
+
+        this.Controls.Add(_nameLabel, _modifierLabel, _valueBox, _currentValueLabel, _normalValueLabel);
+
+        SetValue(currentValue, modifier);
     }
 
-    public void SetValue(int value, int modifier)
+    public void SetValue(int currentValue, int modifier)
     {
-        _currentValue = value;
+        _currentValue = currentValue;
         _currentModifier = modifier;
-        _valueLabel.Text = value.ToString();
+        _currentValueLabel.Text = currentValue.ToString();
+        _normalValueLabel.Text = _normalValue.ToString();
         _modifierLabel.Text = $"modifier: {modifier:+#;-#;+0}";
     }
 
@@ -76,6 +91,11 @@ internal class AttributeLayout : AbsoluteLayout
     /// Gets the current attribute value
     /// </summary>
     public int Value => _currentValue;
+
+    /// <summary>
+    /// Gets the normal (base) attribute value
+    /// </summary>
+    public int NormalValue => _normalValue;
 
     /// <summary>
     /// Event raised when the attribute value changes
@@ -110,8 +130,8 @@ internal class AttributeLayout : AbsoluteLayout
 
     private void UpdateDisplay()
     {
-        _valueLabel.Text = _currentValue.ToString();
-        // Recalculate modifier based on DCC rules
+        _currentValueLabel.Text = _currentValue.ToString();
+        // Recalculate modifier based on DCC rules (using current value)
         _currentModifier = _currentValue switch
         {
             3 => -3,

@@ -1,3 +1,4 @@
+using Meadow;
 using Meadow.Foundation.Graphics.MicroLayout;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,11 @@ public class SelectionController
     /// Gets whether any control is currently selected.
     /// </summary>
     public bool HasSelection => CurrentSelection != null;
+
+    /// <summary>
+    /// Gets whether the current selection is activated for editing.
+    /// </summary>
+    public bool IsActivated => CurrentSelection?.IsActivated ?? false;
 
     /// <summary>
     /// Registers a selectable control with the controller.
@@ -87,10 +93,11 @@ public class SelectionController
     {
         if (_selectables.Count == 0) return;
 
-        // Deselect current
+        // Deselect and deactivate current
         if (CurrentSelection != null)
         {
             CurrentSelection.IsSelected = false;
+            CurrentSelection.IsActivated = false;
         }
 
         // Move to next
@@ -112,10 +119,11 @@ public class SelectionController
     {
         if (_selectables.Count == 0) return;
 
-        // Deselect current
+        // Deselect and deactivate current
         if (CurrentSelection != null)
         {
             CurrentSelection.IsSelected = false;
+            CurrentSelection.IsActivated = false;
         }
 
         // Move to previous
@@ -165,5 +173,28 @@ public class SelectionController
         control.IsSelected = true;
         SelectionChanged?.Invoke(this, control);
         return true;
+    }
+
+    /// <summary>
+    /// Toggles the activation state of the currently selected control.
+    /// When activated, the control is ready for value editing.
+    /// </summary>
+    public void ToggleActivation()
+    {
+        if (CurrentSelection == null) return;
+
+        CurrentSelection.IsActivated = !CurrentSelection.IsActivated;
+        Resolver.Log.Info($"Control {(CurrentSelection.IsActivated ? "activated" : "deactivated")}");
+    }
+
+    /// <summary>
+    /// Deactivates the currently selected control.
+    /// </summary>
+    public void Deactivate()
+    {
+        if (CurrentSelection != null)
+        {
+            CurrentSelection.IsActivated = false;
+        }
     }
 }

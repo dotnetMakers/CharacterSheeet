@@ -60,7 +60,11 @@ public class InputController
         }
         if (platform.CenterButton is { } cb)
         {
-            Resolver.Log.Info($"CENTER");
+            cb.PressStarted += (s, e) =>
+            {
+                Resolver.Log.Info($"CENTER");
+                SelectRequested?.Invoke(this, EventArgs.Empty);
+            };
         }
     }
 }

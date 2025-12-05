@@ -1,4 +1,5 @@
-﻿using Meadow;
+﻿using CharacterSheeet.Dcc;
+using Meadow;
 using Meadow.Foundation.Graphics;
 using Meadow.Foundation.Graphics.MicroLayout;
 
@@ -14,14 +15,11 @@ internal class SaveLayout : AbsoluteLayout
     public SaveLayout(string name, string value, int left, int top)
         : base(left, top, 120, 60)
     {
-        var smallFont = new Font12x16();
-        var largeFont = new Font16x24();
-
         _nameLabel = new Label(0, 0, 120, 30)
         {
             BackgroundColor = Color.Black,
             TextColor = Color.White,
-            Font = smallFont,
+            Font = LayoutConstants.SmallFont,
             VerticalAlignment = VerticalAlignment.Bottom,
             HorizontalAlignment = HorizontalAlignment.Right,
             Text = name
@@ -30,7 +28,7 @@ internal class SaveLayout : AbsoluteLayout
         {
             BackgroundColor = Color.Black,
             TextColor = Color.White,
-            Font = smallFont,
+            Font = LayoutConstants.SmallFont,
             VerticalAlignment = VerticalAlignment.Top,
             HorizontalAlignment = HorizontalAlignment.Right,
             Text = "Save"
@@ -39,7 +37,7 @@ internal class SaveLayout : AbsoluteLayout
         {
             BackgroundColor = Color.Transparent,
             TextColor = Color.Black,
-            Font = largeFont,
+            Font = LayoutConstants.LargeFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = value
@@ -55,6 +53,6 @@ internal class SaveLayout : AbsoluteLayout
 
     public void SetValue(int value)
     {
-        _valueLabel.Text = $"{value}:+#;-#";
+        _valueLabel.Text = $"{value:+#;-#;+0}";
     }
 }

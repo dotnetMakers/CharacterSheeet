@@ -7,12 +7,11 @@ namespace CharacterSheeet.Core;
 
 internal class WeaponsListLayout : ItemListLayout
 {
-    private Label[] _weaponLabels;
+    private readonly Label[] _weaponLabels;
 
     public WeaponsListLayout(int left, int top, int width, int height, Character character)
         : base("Weapons", left, top, width, height)
     {
-        var smallFont = new Font8x12();
         _weaponLabels = new Label[character.Weapons.Length];
 
         var i = 0;
@@ -25,8 +24,8 @@ internal class WeaponsListLayout : ItemListLayout
             _weaponLabels[i] = new Label(3, y, this.Width, 20)
             {
                 TextColor = Color.Black,
-                BackgroundColor =Color.Transparent,
-                Font = smallFont,
+                BackgroundColor = Color.Transparent,
+                Font = LayoutConstants.XXSmallFont,
                 HorizontalAlignment = HorizontalAlignment.Left,
                 Text = weapon is MeleeWeapon
                     ? weapon.ToString(bonus.MeleeAttack, bonus.MeleeDamage)

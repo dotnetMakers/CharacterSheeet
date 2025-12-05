@@ -102,6 +102,13 @@ public class DisplayController
         _selectionController.SelectPrevious();
     }
 
+    public void ToggleActivation()
+    {
+        _selectionController.ToggleActivation();
+    }
+
+    public bool IsActivated => _selectionController.IsActivated;
+
     public void IncrementSelectedValue()
     {
         var selected = _selectionController.CurrentSelection;

@@ -1,4 +1,5 @@
-﻿using Meadow;
+﻿using CharacterSheeet.Dcc;
+using Meadow;
 using Meadow.Foundation.Graphics;
 using Meadow.Foundation.Graphics.MicroLayout;
 
@@ -12,14 +13,11 @@ internal class HalflingAbilitiesLayout : AbsoluteLayout
     public HalflingAbilitiesLayout(int left, int top, int width, int height)
         : base(left, top, width, height)
     {
-        var smallFont = new Font8x12();
-        var largeFont = new Font12x16();
-
         _titleLabel = new Label(0, 0, this.Width, 30)
         {
-            BackgroundColor =Color.Black,
+            BackgroundColor = Color.Black,
             TextColor = Color.White,
-            Font = largeFont,
+            Font = LayoutConstants.SmallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = "Halfling Abilities"

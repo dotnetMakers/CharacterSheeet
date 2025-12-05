@@ -1,3 +1,4 @@
+using CharacterSheeet.Dcc;
 using Meadow;
 using Meadow.Foundation.Graphics;
 using Meadow.Foundation.Graphics.MicroLayout;
@@ -52,15 +53,13 @@ public class SelectableValueLayout : AbsoluteLayout
         string title, string value, int selectionIndex = -1)
         : base(x, y, width, height)
     {
-        var medFont = new Font12x20();
-
         // Title label (not selectable)
         _titleLabel = new Label(0, 0, width, height / 2)
         {
             Text = title,
             TextColor = Color.Black,
             BackgroundColor = Color.Transparent,
-            Font = medFont,
+            Font = LayoutConstants.MediumFont,
             HorizontalAlignment = HorizontalAlignment.Left,
             VerticalAlignment = VerticalAlignment.Center
         };
@@ -71,7 +70,7 @@ public class SelectableValueLayout : AbsoluteLayout
             Text = value,
             TextColor = Color.Black,
             BackgroundColor = Color.White,
-            Font = medFont,
+            Font = LayoutConstants.MediumFont,
             HorizontalAlignment = HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center,
             IsSelectable = selectionIndex >= 0,

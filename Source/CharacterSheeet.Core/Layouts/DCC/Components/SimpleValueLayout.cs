@@ -1,4 +1,5 @@
-﻿using Meadow;
+﻿using CharacterSheeet.Dcc;
+using Meadow;
 using Meadow.Foundation.Graphics;
 using Meadow.Foundation.Graphics.MicroLayout;
 
@@ -13,14 +14,11 @@ internal class SimpleValueLayout : AbsoluteLayout
     public SimpleValueLayout(string name, string value, int left, int top, int width = 120)
         : base(left, top, width, 60)
     {
-        var smallFont = new Font8x12();
-        var largeFont = new Font12x16();
-
         _nameLabel = new Label(0, 0, this.Width, 30)
         {
-            BackgroundColor =Color.Black,
+            BackgroundColor = Color.Black,
             TextColor = Color.White,
-            Font = smallFont,
+            Font = LayoutConstants.XSmallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = name
@@ -28,8 +26,8 @@ internal class SimpleValueLayout : AbsoluteLayout
         _valueLabel = new Label(0, 30, this.Width, this.Height - 30)
         {
             TextColor = Color.Black,
-            BackgroundColor =Color.Transparent,
-            Font = largeFont,
+            BackgroundColor = Color.Transparent,
+            Font = LayoutConstants.SmallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = value

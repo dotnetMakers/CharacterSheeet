@@ -20,9 +20,6 @@ internal class HitPointLayout : AbsoluteLayout
     public HitPointLayout(int left, int top, Character character, int selectionIndex = -1)
         : base(left, top, 120, 150)
     {
-        var smallFont = new Font12x16();
-        var largeFont = new Font16x24();
-
         var img = Image.LoadFromResource("CharacterSheeet.Core.Assets.cup.bmp");
 
         _graphic = new Picture(15, 0, 90, 113, img);
@@ -31,7 +28,7 @@ internal class HitPointLayout : AbsoluteLayout
         {
             BackgroundColor = Color.White,
             TextColor = Color.Black,
-            Font = smallFont,
+            Font = LayoutConstants.SmallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = "Hit Points"
@@ -40,7 +37,7 @@ internal class HitPointLayout : AbsoluteLayout
         {
             BackgroundColor = Color.White,
             TextColor = Color.Black,
-            Font = smallFont,
+            Font = LayoutConstants.SmallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = $"Max: {character.MaxHitPoints}"
@@ -49,7 +46,7 @@ internal class HitPointLayout : AbsoluteLayout
         {
             BackgroundColor = Color.White,
             TextColor = Color.Black,
-            Font = largeFont,
+            Font = LayoutConstants.LargeFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = character.CurrentHitPoints.ToString(),

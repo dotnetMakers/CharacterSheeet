@@ -21,9 +21,6 @@ internal class ArmorClassLayout : AbsoluteLayout
     public ArmorClassLayout(int left, int top, Character character, int selectionIndex = -1)
         : base(left, top, 120, 150)
     {
-        var smallFont = new Font12x16();
-        var largeFont = new Font16x24();
-
         var img = Image.LoadFromResource("CharacterSheeet.Core.Assets.shield.bmp");
 
         _shield = new Picture(15, 0, 90, 113, img);
@@ -32,7 +29,7 @@ internal class ArmorClassLayout : AbsoluteLayout
         {
             BackgroundColor = Color.White,
             TextColor = Color.Black,
-            Font = smallFont,
+            Font = LayoutConstants.SmallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = "Armor"
@@ -41,7 +38,7 @@ internal class ArmorClassLayout : AbsoluteLayout
         {
             BackgroundColor = Color.White,
             TextColor = Color.Black,
-            Font = smallFont,
+            Font = LayoutConstants.SmallFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = "Class"
@@ -50,7 +47,7 @@ internal class ArmorClassLayout : AbsoluteLayout
         {
             BackgroundColor = Color.White,
             TextColor = Color.Black,
-            Font = largeFont,
+            Font = LayoutConstants.LargeFont,
             VerticalAlignment = VerticalAlignment.Center,
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = character.ArmorClass.ToString(),

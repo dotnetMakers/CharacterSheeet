@@ -1,4 +1,5 @@
-﻿using Meadow;
+﻿using CharacterSheeet.Dcc;
+using Meadow;
 using Meadow.Foundation.Graphics;
 using Meadow.Foundation.Graphics.MicroLayout;
 using System.Collections.Generic;
@@ -25,8 +26,6 @@ internal class TestSheet : Sheet
     {
         var layout = new AbsoluteLayout(300, 300);
 
-        var largeFont = new Font16x24();
-
         layout.Controls.Add(
             new Label(10, 10, 250, 30)
             {
@@ -34,7 +33,7 @@ internal class TestSheet : Sheet
                 BackgroundColor = Color.Black,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
-                Font = largeFont,
+                Font = LayoutConstants.LargeFont,
                 Text = $"This is Page 1"
             });
 
@@ -45,8 +44,6 @@ internal class TestSheet : Sheet
     {
         var layout = new AbsoluteLayout(480, 480);
 
-        var largeFont = new Font16x24();
-
         layout.Controls.Add(
             new Label(0, 0, 200, 30)
             {
@@ -54,7 +51,7 @@ internal class TestSheet : Sheet
                 BackgroundColor = Color.Black,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
-                Font = largeFont,
+                Font = LayoutConstants.LargeFont,
                 Text = $"This is Page 2"
             });
 
