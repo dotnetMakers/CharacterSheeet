@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Docs/">
+    <File Path="../Docs/installation.md" />
+  </Folder>
   <Folder Name="/_ref/">
     <Project Path="../../../wilderness/Meadow.Contracts/Source/Meadow.Contracts/Meadow.Contracts.csproj">
       <Deploy />
@@ -39,4 +42,5 @@
   <Project Path="CharacterSheeet.Core/CharacterSheeet.Core.csproj" />
   <Project Path="CharacterSheeet.Desktop/CharacterSheeet.Desktop.csproj" />
   <Project Path="CharacterSheeet.F7/CharacterSheeet.F7.csproj" />
+  <Project Path="CharacterSheeet.RPi/CharacterSheeet.RPi.csproj" />
 </Solution>

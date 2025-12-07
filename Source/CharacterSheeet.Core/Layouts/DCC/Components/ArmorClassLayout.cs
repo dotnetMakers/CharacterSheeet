@@ -1,4 +1,5 @@
-﻿using Meadow;
+﻿using CharacterSheeet.Core;
+using Meadow;
 using Meadow.Foundation.Graphics;
 using Meadow.Foundation.Graphics.MicroLayout;
 
@@ -10,13 +11,13 @@ internal class ArmorClassLayout : AbsoluteLayout
 
     private readonly Label _armorLabel;
     private readonly Label _classLabel;
-    private readonly Label _valueLabel;
+    private readonly ActivatableLabel _valueLabel;
     private readonly Picture _shield;
 
     /// <summary>
     /// Gets the value label for selection management
     /// </summary>
-    public Label ValueLabel => _valueLabel;
+    public ActivatableLabel ValueLabel => _valueLabel;
 
     public ArmorClassLayout(int left, int top, Character character, int selectionIndex = -1)
         : base(left, top, 120, 150)
@@ -43,7 +44,7 @@ internal class ArmorClassLayout : AbsoluteLayout
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = "Class"
         };
-        _valueLabel = new Label((this.Width - 50) / 2, 50, 50, 28)
+        _valueLabel = new ActivatableLabel((this.Width - 50) / 2, 50, 50, 28)
         {
             BackgroundColor = Color.White,
             TextColor = Color.Black,

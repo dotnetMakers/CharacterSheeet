@@ -3,20 +3,20 @@
         <OutputType>Exe</OutputType>
         <TargetFramework>net8.0</TargetFramework>
         <LangVersion>10</LangVersion>
+        <AssemblyName>App</AssemblyName>
         <Nullable>enable</Nullable>
     </PropertyGroup>
-    <ItemGroup>
-        <PackageReference Include="Meadow.Foundation" Version="2.*" />
-        <PackageReference Include="Meadow.Foundation.Displays.Gtk" Version="2.*" />
-        <PackageReference Include="Meadow.Linux" Version="2.*" />
-    </ItemGroup>
     <ItemGroup>
         <None Include="app.config.yaml">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
     </ItemGroup>
     <ItemGroup>
+        <ProjectReference Include="..\..\..\..\wilderness\Meadow.Core\Source\implementations\linux\Meadow.Linux\Meadow.Linux.csproj" />
+        <ProjectReference Include="..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Core\Meadow.Foundation.Core.csproj" />
         <ProjectReference Include="..\CharacterSheeet.Core\CharacterSheeet.Core.csproj" />
+        <ProjectReference Include="..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Displays.ePaperWaveShare\Driver\Displays.ePaperWaveShare.csproj" />
+        <ProjectReference Include="..\..\..\..\wilderness\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Motion.Apds9960\Driver\Sensors.Motion.Apds9960.csproj" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Controllers\" />

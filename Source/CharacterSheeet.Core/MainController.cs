@@ -1,6 +1,7 @@
 ﻿using CharacterSheeet.Core.Contracts;
 using CharacterSheeet.Dcc;
 using Meadow;
+using System;
 using System.Threading.Tasks;
 
 namespace CharacterSheeet.Core;
@@ -10,11 +11,9 @@ public class MainController
     private ICharacterSheeetHardware hardware;
     private Character _character;
 
-    private CloudController cloudController;
     private ConfigurationController configurationController;
     private DisplayController displayController;
     private InputController inputController;
-    private SensorController sensorController;
 
     private INetworkController NetworkController => hardware.NetworkController;
 
@@ -31,8 +30,6 @@ public class MainController
 
         // create generic services
         configurationController = new ConfigurationController();
-        cloudController = new CloudController(Resolver.CommandService);
-        sensorController = new SensorController(hardware);
         inputController = new InputController(hardware);
 
         displayController = new DisplayController(
@@ -124,9 +121,11 @@ public class MainController
     {
         while (true)
         {
-            // add any app logic here
+            //            await Task.Delay(1000);
 
-            await Task.Delay(5000);
+            // add any app logic here
+            await Task.Delay(10000);
+            OnDownButton(null, EventArgs.Empty);
         }
     }
 }

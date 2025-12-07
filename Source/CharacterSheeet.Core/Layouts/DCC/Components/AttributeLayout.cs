@@ -9,7 +9,7 @@ internal class AttributeLayout : AbsoluteLayout
 {
     private readonly Label _nameLabel;
     private readonly Label _modifierLabel;
-    private readonly Label _currentValueLabel;
+    private readonly ActivatableLabel _currentValueLabel;
     private readonly Label _normalValueLabel;
     private readonly Box _valueBox;
     private readonly string _attributeName;
@@ -20,7 +20,7 @@ internal class AttributeLayout : AbsoluteLayout
     /// <summary>
     /// Gets the current value label for selection management
     /// </summary>
-    public Label ValueLabel => _currentValueLabel;
+    public ActivatableLabel ValueLabel => _currentValueLabel;
 
     public AttributeLayout(string name, int left, int top, int normalValue, int currentValue, int modifier, int selectionIndex = -1)
         : base(left, top, 210, 60)
@@ -49,7 +49,7 @@ internal class AttributeLayout : AbsoluteLayout
         };
 
         // Current value - upper left, larger, selectable
-        _currentValueLabel = new Label(_valueBox.Left + 4, _valueBox.Top + 2, 30, 28)
+        _currentValueLabel = new ActivatableLabel(_valueBox.Left + 4, _valueBox.Top + 2, 30, 28)
         {
             BackgroundColor = Color.White,
             TextColor = Color.Black,
@@ -64,7 +64,7 @@ internal class AttributeLayout : AbsoluteLayout
         _normalValueLabel = new Label(_valueBox.Right - 24, _valueBox.Bottom - 18, 20, 14)
         {
             BackgroundColor = Color.White,
-            TextColor = Color.Gray,
+            TextColor = Color.Black,
             Font = LayoutConstants.SmallFont,
             VerticalAlignment = VerticalAlignment.Bottom,
             HorizontalAlignment = HorizontalAlignment.Right

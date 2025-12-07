@@ -1,4 +1,5 @@
-﻿using Meadow;
+﻿using CharacterSheeet.Core;
+using Meadow;
 using Meadow.Foundation.Graphics;
 using Meadow.Foundation.Graphics.MicroLayout;
 
@@ -9,13 +10,13 @@ internal class HitPointLayout : AbsoluteLayout
     private readonly Character _character;
     private readonly Label _staticLabel;
     private readonly Label _maxLabel;
-    private readonly Label _valueLabel;
+    private readonly ActivatableLabel _valueLabel;
     private readonly Picture _graphic;
 
     /// <summary>
     /// Gets the value label for selection management
     /// </summary>
-    public Label ValueLabel => _valueLabel;
+    public ActivatableLabel ValueLabel => _valueLabel;
 
     public HitPointLayout(int left, int top, Character character, int selectionIndex = -1)
         : base(left, top, 120, 150)
@@ -42,7 +43,7 @@ internal class HitPointLayout : AbsoluteLayout
             HorizontalAlignment = HorizontalAlignment.Center,
             Text = $"Max: {character.MaxHitPoints}"
         };
-        _valueLabel = new Label((this.Width - 50) / 2, 50, 50, 28)
+        _valueLabel = new ActivatableLabel((this.Width - 50) / 2, 50, 50, 28)
         {
             BackgroundColor = Color.White,
             TextColor = Color.Black,

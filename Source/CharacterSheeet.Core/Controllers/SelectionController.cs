@@ -1,5 +1,4 @@
 using Meadow;
-using Meadow.Foundation.Graphics.MicroLayout;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,18 +10,18 @@ namespace CharacterSheeet.Core;
 /// </summary>
 public class SelectionController
 {
-    private readonly List<ISelectable> _selectables = new();
+    private readonly List<IActivatable> _selectables = new();
     private int _currentIndex = -1;
 
     /// <summary>
     /// Event raised when the selection changes.
     /// </summary>
-    public event EventHandler<ISelectable?>? SelectionChanged;
+    public event EventHandler<IActivatable?>? SelectionChanged;
 
     /// <summary>
     /// Gets the currently selected control, or null if nothing is selected.
     /// </summary>
-    public ISelectable? CurrentSelection =>
+    public IActivatable? CurrentSelection =>
         _currentIndex >= 0 && _currentIndex < _selectables.Count
             ? _selectables[_currentIndex]
             : null;
@@ -42,7 +41,7 @@ public class SelectionController
     /// Controls are automatically sorted by SelectionIndex.
     /// </summary>
     /// <param name="selectable">The selectable control to register.</param>
-    public void Register(ISelectable selectable)
+    public void Register(IActivatable selectable)
     {
         if (!_selectables.Contains(selectable))
         {
@@ -55,7 +54,7 @@ public class SelectionController
     /// Registers multiple selectable controls.
     /// </summary>
     /// <param name="selectables">The controls to register.</param>
-    public void RegisterRange(IEnumerable<ISelectable> selectables)
+    public void RegisterRange(IEnumerable<IActivatable> selectables)
     {
         foreach (var selectable in selectables)
         {

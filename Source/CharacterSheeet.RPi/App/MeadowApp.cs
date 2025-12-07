@@ -1,9 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using CharacterSheeet.Core;
 using Meadow;
-using Meadow.Foundation.Displays;
-using Meadow.Pinouts;
-using CharacterSheeet.Core;
+using System.Threading.Tasks;
 
 namespace CharacterSheeet.RPi;
 
@@ -12,23 +9,15 @@ internal class MeadowApp : App<RaspberryPi>
     private CharacterSheeetHardware hardware;
     private MainController mainController;
 
-    public bool SupportDisplay { get; set; } = false;
-
     public override Task Initialize()
     {
-        hardware = new CharacterSheeetHardware(Device, SupportDisplay);
+        hardware = new CharacterSheeetHardware(Device);
         mainController = new MainController();
         return mainController.Initialize(hardware);
     }
 
     public override Task Run()
     {
-        if (hardware.Display is GtkDisplay gtk)
-        {
-            _ = mainController.Run();
-            gtk.Run();
-        }
-
         return mainController.Run();
     }
 }
