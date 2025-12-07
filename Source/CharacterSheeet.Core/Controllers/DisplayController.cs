@@ -46,6 +46,7 @@ public class DisplayController
             Resolver.Log.Info("Page is not null.  Changing.");
             _selectionController.Clear();
             _screen.BeginUpdate();
+            _screen.Invalidate();
             _screen.Controls.Clear();
             _screen.Controls.Add(page);
             _screen.EndUpdate();
@@ -66,6 +67,7 @@ public class DisplayController
         {
             _selectionController.Clear();
             _screen.BeginUpdate();
+            _screen.Invalidate();
             _screen.Controls.Clear();
             _screen.Controls.Add(page);
             _screen.EndUpdate();
